@@ -7404,6 +7404,45 @@ blockquote.vs-quote .quote-author {
   color: var(--white-color);
 }
 
+
+
+
+.img-box1a {
+  position: relative;
+}
+.img-box1a .card-style1,
+.img-box1a .card-style2 {
+  position: absolute;
+  right: 0;
+}
+
+.img-box1a .img-2 {
+  z-index: 1;
+  margin: -360px 0 0 auto;
+  max-width: 100%;
+  width: -moz-fit-content;
+  width: fit-content;
+  position: relative;
+  border-radius: 20px 20px 120px 20px;
+  overflow: hidden;
+  padding: 20px;
+  background: var(--white-color);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*------------------- 4.11. About  -------------------*/
 .img-box1 {
   position: relative;
