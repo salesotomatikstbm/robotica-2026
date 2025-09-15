@@ -648,6 +648,76 @@
       $(".vs-color-plate").toggleClass("open");
     });
   }
+
+
+
+
+
+
+ document.addEventListener('DOMContentLoaded', function() {
+            // Get elements
+            const registerBtn = document.getElementById('registerBtn');
+            const popupOverlay = document.getElementById('popupOverlay');
+            const closeBtn = document.getElementById('closeBtn');
+            
+            // Event button elements
+            const roboRaceBtn = document.getElementById('roboRaceBtn');
+            const roboSumoBtn = document.getElementById('roboSumoBtn');
+            const workingModelBtn = document.getElementById('workingModelBtn');
+            
+            // Payment gateway links (replace with actual links)
+            const paymentLinks = {
+                roboRace: 'https://pages.razorpay.com/robotica25',
+                roboSumo: 'https://pages.razorpay.com/robotica25',
+                workingModel: 'https://pages.razorpay.com/robotica25'
+            };
+            
+            // Open popup when Register button is clicked
+            registerBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                popupOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+            
+            // Close popup when close button is clicked
+            closeBtn.addEventListener('click', function() {
+                popupOverlay.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+            
+            // Close popup when clicking outside the content
+            popupOverlay.addEventListener('click', function(e) {
+                if (e.target === popupOverlay) {
+                    popupOverlay.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+            
+            // Close with Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && popupOverlay.classList.contains('active')) {
+                    popupOverlay.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+            
+            // Event button click handlers
+            roboRaceBtn.addEventListener('click', function() {
+                window.open(paymentLinks.roboRace, '_blank');
+            });
+            
+            roboSumoBtn.addEventListener('click', function() {
+                window.open(paymentLinks.roboSumo, '_blank');
+            });
+            
+            workingModelBtn.addEventListener('click', function() {
+                window.open(paymentLinks.workingModel, '_blank');
+            });
+        });
+
+
+
+
   /*----------- 17. Animate Counter Js ----------*/
   // Function to animate the counters
   function animateCounter(counter) {

@@ -232,7 +232,7 @@
 
             <div class="col-auto">
               <div class="d-none d-xl-inline-flex">
-                <a href=" " class="vs-btn" tabindex="0">
+                <a href="#" class="vs-btn" id="registerBtn">
                   Register Now
                 </a>
               </div>
@@ -244,6 +244,11 @@
         </div>
       </div>
     </div>
+
+
+
+
+
 
 
 
@@ -352,9 +357,7 @@
                     <a href="#event_details" class="vs-btn">
                       Explore Event
                     </a>
-                    <a href=" " class="vs-btn style3">
-                      Register Now
-                    </a>
+                    <a href="#" class="vs-btn style3" id="registerBtn">Register Now</a>
                   </div>
                 </div>
               </div>
@@ -383,7 +386,7 @@
                   <a href=" " class="vs-btn">
                     Explore Event
                   </a>
-                  <a href=" " class="vs-btn style3">
+                  <a href=" " class="vs-btn style3" id="registerBtn">
                     Register Now
                   </a>
                 </div>
@@ -593,7 +596,7 @@
                     themes. Robo Race and Robo Sumo are competitive events testing robot speed, precision, strength, and
                     strategy.</p>
                   <div class="event-footer">
-                    <span> <a href=" " class="event-link">Register Now</a></span>
+                    <span>   <a href="#" class="event-link" id="registerBtn">Register Now</a></span>
                     <span class="event-price">Entry Fee: <span>₹ 1,000</span></span>
                   </div>
                 </div>
@@ -667,7 +670,7 @@
               nurturing talent paves the way for breakthroughs that will change the world.
             </p>
             <cite style="font-size: 25px; font-weight: normal;" class="mb-10">Sathish S</cite>
-            <br> 
+            <br>
             <h6 style="font-size: 16px; font-weight: normal;">Founder & CEO, Otomatiks</h6>
           </blockquote>
 
@@ -921,7 +924,7 @@
               <p><i class="fas fa-map-marker-alt"></i>&nbsp;&nbsp; Venue - VIT University, Chennai</p>
               <p><i class="fas fa-indian-rupee-sign">₹</i>&nbsp;&nbsp; Participation Fees - ₹ 1000</p>
               <form class="newsletter-form"></form>
-              <button type="submit" class="vs-btn">Register Now</button>
+              <button type="submit" class="vs-btn" id="registerBtn">Register Now</button>
               </form>
             </div>
           </div>
@@ -1012,7 +1015,7 @@
               <p><i class="fas fa-map-marker-alt"></i>&nbsp;&nbsp; Venue - VIT University, Chennai</p>
               <p><i class="fas fa-indian-rupee-sign">₹</i>&nbsp;&nbsp; Participation Fees - ₹ 1000</p>
               <form class="newsletter-form"></form>
-              <button type="submit" class="vs-btn">Register Now</button>
+              <button type="submit" class="vs-btn" id="registerBtn">Register Now</button>
               </form>
             </div>
           </div>
@@ -1109,7 +1112,7 @@
               <p><i class="fas fa-map-marker-alt"></i>&nbsp;&nbsp; Venue - VIT University, Chennai</p>
               <p><i class="fas fa-indian-rupee-sign">₹</i>&nbsp;&nbsp; Participation Fees - ₹ 1000</p>
               <form class="newsletter-form"></form>
-              <button type="submit" class="vs-btn">Register Now</button>
+              <button type="submit"  class="vs-btn" id="registerBtn">Register Now</button>
               </form>
             </div>
           </div>
@@ -1734,9 +1737,38 @@
 
 
 
-
-
-
+ <!-- Popup Overlay -->
+    <div class="popup-overlay" id="popupOverlay">
+        <div class="popup-content">
+            <button class="close-btn" id="closeBtn">
+                <i class="fas fa-times"></i>
+            </button>
+            <h2 class="popup-title">Select Event</h2>
+            <div class="popup-buttons">
+                <button class="popup-btn vs-btn" id="roboRaceBtn">
+                 
+                    Robo Race
+                </button>
+                <button class="popup-btn vs-btn" id="roboSumoBtn">
+                   
+                    Robo Sumo
+                </button>
+                <button class="popup-btn vs-btn" id="workingModelBtn">
+                   
+                    Working Model
+                </button>
+                   <button class="popup-btn vs-btn" id="workingModelBtn">
+                   
+                   Hackathon
+                </button>
+                  <button class="popup-btn vs-btn" id="workingModelBtn">
+                   
+                  Makaton
+                </button>
+            </div>
+            <p class="event-info">Click on any event to be redirected to the payment gateway. Registration will be complete after successful payment.</p>
+        </div>
+    </div>
 
 
 
