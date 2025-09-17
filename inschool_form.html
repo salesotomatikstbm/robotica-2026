@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Registration Form</title>
+  <title>Inschool Registration Form</title>
   <meta name="author" content="vecuro">
   <meta name="description" content="Eventino - IT Solution & Service HTML Template">
   <meta name="keywords" content="Eventino - IT Solution & Service HTML Template" />
@@ -16,7 +16,9 @@
   <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicons/favicon-32x32.png">
   <meta name="theme-color" content="#ffffff">
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
+    rel="stylesheet">
   <!-- CSS Files -->
   <link rel="stylesheet" href="assets/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/css/fontawesome.min.css">
@@ -24,6 +26,12 @@
   <link rel="stylesheet" href="assets/css/slick.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@23.7.3/build/css/intlTelInput.css">
   <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    .required:after {
+      content: " *";
+      color: red;
+    }
+  </style>
 </head>
 
 <body>
@@ -34,114 +42,102 @@
       <span class="loader"></span>
     </div>
   </div>
+  <div class="container">
+    <div class="col-lg-12">
 
-  <div class="hero-inner">
-    <div class="overlay"></div>
-    <div class="hero-bg" data-bg-src="assets/img/bg/h-1-3.jpg"></div>
-    <div class="container">
-      <div class="row justify-content-between">
-        <div class="col-lg-6">
-          <div class="hero-content">
-            <span class="hero-subtitle">Robotica 2026</span>
-            <h1 class="hero-title">In-School Competition</h1>
-            <ul class="hero-text">
-              <li><strong>Fill the form carefully</strong> with accurate details.</li>
-              <li><strong>Personal Details:</strong> Provide your name and contact number with correct data.</li>
-              <li><strong>Select Level and Grade:</strong> Choose from Level 1-6 and Grade 5th-12th.</li>
-              <li><strong>Enter School Name:</strong> Fill in the student's school name.</li>
-              <li><strong>Select Branch:</strong> Choose your branch location.</li>
-              <li><strong>Gender:</strong> Select the student’s gender (Male/Female).</li>
-              <li><strong>For queries:</strong> Contact us at <strong>+91-6383791772</strong> or email <strong>coo@otomatiks.in</strong>.</li>
-            </ul>
+      <form class="form-style1 ajax-contact mt-3" action="mail.php" method="post">
+        <img src="assets/img/shapes/f-1-1.png" alt="form shape" class="shape-1">
+        <img src="assets/img/shapes/f-1-2.png" alt="form shape" class="shape-2">
+        <h3 class="title">Register Now</h3>
+        <span class="subtitle">Robotica 2026</span>
+        <h1 class="hero-title">In-School Competition</h1>
+
+        <div class="row gx-20">
+          <div class="col-md-12 form-group">
+            <label for="funame" class="required">Full Name</label>
+            <input class="form-control" type="text" name="fname" id="funame" placeholder="Full Name" required>
+          </div>
+
+          <div class="col-md-12 form-group">
+            <label for="tel" class="required">Phone Number</label>
+            <input class="form-control" type="tel" name="tel" id="tel" placeholder="Phone Number" required>
+          </div>
+
+          <div class="col-md-12 form-group">
+            <label for="email" class="required">Email Address</label>
+            <input class="form-control" type="email" name="email" id="email" placeholder="Email Address" required>
+          </div>
+          
+          <div class="col-md-12 form-group">
+            <label for="category" class="required">Category</label>
+            <select class="form-control" name="category" id="category" required>
+              <option value="">Select Category</option>
+              <option value="Sub Junior">Sub Junior</option>
+              <option value="Junior">Junior</option>
+              <option value="Senior">Senior</option>
+            </select>
+          </div>
+
+          <div class="col-md-12 form-group">
+            <label for="grade" class="required">Grade</label>
+            <select class="form-control" name="grade" id="grade" required>
+              <option value="">Select Grade</option>
+              <option value="3">3rd Grade</option>
+              <option value="4">4th Grade</option>
+              <option value="5">5th Grade</option>
+              <option value="6">6th Grade</option>
+              <option value="7">7th Grade</option>
+              <option value="8">8th Grade</option>
+              <option value="9">9th Grade</option>
+              <option value="10">10th Grade</option>
+              <option value="11">11th Grade</option>
+              <option value="12">12th Grade</option>
+            </select>
+          </div>
+
+          <div class="col-md-12 form-group">
+            <label for="school_or_oac" class="required">School Name / OAC</label>
+            <select class="form-control" name="school_or_oac" id="school_or_oac" required>
+              <option value="">Select School Name / OAC</option>
+              <option value="OAC">OAC - Vellore</option>
+              <option value="OAC">OAC - Tambaram</option>
+              <option value="School Name">Budding Minds International School</option>
+            </select>
+          </div>
+
+          <div class="col-md-12 form-group">
+            <label for="gender" class="required">Gender</label>
+            <select class="form-control" name="gender" id="gender" required>
+              <option value="">Select Gender</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+            </select>
+          </div>
+
+          <div class="col-md-12 form-group">
+            <label for="hotel_required" class="required">Hotel Required</label>
+            <select class="form-control" name="hotel_required" id="hotel_required" required>
+              <option value="">Hotel Required</option>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+            </select>
+          </div>
+
+          <div class="col-md-12 form-group">
+            <label for="staff_branch" class="required">Staff - Branch</label>
+            <select class="form-control" name="staff_branch" id="staff_branch" required>
+              <option value="">Select Staff - Branch</option>
+              <option value="Vellore">Arun - Tambaram</option>
+              <option value="United Arab Emirates (UAE)">Diana - Tambaram</option>
+            </select>
+          </div>
+
+          <div class="col-md-12 form-group">
+            <button class="vs-btn style2" type="submit">Register Now</button>
           </div>
         </div>
-        <div class="col-lg-5">
-          <form class="form-style1 ajax-contact" action="mail.php" method="post">
-            <img src="assets/img/shapes/f-1-1.png" alt="form shape" class="shape-1">
-            <img src="assets/img/shapes/f-1-2.png" alt="form shape" class="shape-2">
-            <h3 class="title">Register Now</h3>
-            <span class="subtitle">Make A Booking</span>
-            <div class="row gx-20">
-              <div class="col-md-12 form-group">
-                <input class="form-control" type="text" name="fname" id="funame" placeholder="Full Name">
-              </div>
-
-              <div class="col-md-12 form-group">
-                <input class="form-control" type="tel" name="tel" id="tel" placeholder="Phone Number">
-              </div>
-
-              <div class="col-md-12 form-group">
-                <select class="form-control" name="level" id="level">
-                  <option value="">Select Level</option>
-                  <option value="1">Level 1</option>
-                  <option value="2">Level 2</option>
-                  <option value="3">Level 3</option>
-                  <option value="4">Level 4</option>
-                  <option value="5">Level 5</option>
-                  <option value="6">Level 6</option>
-                </select>
-              </div>
-
-              <div class="col-md-12 form-group">
-                <select class="form-control" name="grade" id="grade">
-                  <option value="">Select Grade</option>
-                  <option value="5">5th Grade</option>
-                  <option value="6">6th Grade</option>
-                  <option value="7">7th Grade</option>
-                  <option value="8">8th Grade</option>
-                  <option value="9">9th Grade</option>
-                  <option value="10">10th Grade</option>
-                  <option value="11">11th Grade</option>
-                  <option value="12">12th Grade</option>
-                </select>
-              </div>
-
-              <div class="col-md-12 form-group">
-                <input class="form-control" type="text" name="school" id="school" placeholder="School Name">
-              </div>
-
-              <div class="col-md-12 form-group">
-                <select class="form-control" name="branch" id="branch">
-                  <option value="">Select Branch</option>
-                  <option value="Vellore">Vellore</option>
-                  <option value="United Arab Emirates (UAE)">United Arab Emirates (UAE)</option>
-                  <option value="Parrys, Chennai">Parrys, Chennai</option>
-                  <option value="Annanagar, Chennai">Annanagar, Chennai</option>
-                  <option value="Tambaram">Tambaram</option>
-                  <option value="Salem">Salem</option>
-                  <option value="Attur">Attur</option>
-                  <option value="Namakkal">Namakkal</option>
-                  <option value="Gudiyatham">Gudiyatham</option>
-                  <option value="Dindigul">Dindigul</option>
-                  <option value="Madurai">Madurai</option>
-                  <option value="Theni">Theni</option>
-                  <option value="Mumbai">Mumbai</option>
-                  <option value="United Kingdom (UK)">United Kingdom (UK)</option>
-                  <option value="Thirunelveli">Thirunelveli</option>
-                  <option value="Bangalore">Bangalore</option>
-                  <option value="Karur">Karur</option>
-                  <option value="Pondicherry">Pondicherry</option>
-                  <option value="Kovilambakkam">Kovilambakkam</option>
-                  <option value="Omalur">Omalur</option>
-                </select>
-              </div>
-
-              <div class="col-md-12 form-group">
-                <select class="form-control" name="gender" id="gender">
-                  <option value="">Select Gender</option>
-                  <option value="Male">Male</option>
-                  <option value="Female">Female</option>
-                </select>
-              </div>
-
-              <div class="col-md-12 form-group">
-                <button class="vs-btn style2" type="submit">Register Now</button>
-              </div>
-            </div>
-          </form>
-          <p class="form-messages mb-0 mt-3"></p>
-        </div>
-      </div>
+      </form>
+      <p class="form-messages mb-0 mt-3"></p>
     </div>
   </div>
 
