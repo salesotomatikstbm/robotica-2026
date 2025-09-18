@@ -5172,6 +5172,24 @@ a.text-theme:hover,
     height: 100%;
   }
 }
+
+
+  @media (max-width: 767px) {
+        .menu-top .row {
+            display: block; /* Stack content one below the other */
+        }
+        .header-logo {
+            margin-bottom: 10px;
+        }
+        .vs-btn {
+            width: 100%;
+            margin-top: 15px;
+        }
+    }
+
+
+
+
 /* Medium devices */
 @media (max-width: 991px) {
   .header-links li {
