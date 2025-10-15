@@ -4,22 +4,11 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Inschool Registration Form</title>
-  <meta name="author" content="vecuro">
-  <meta name="description" content="Eventino - IT Solution & Service HTML Template">
-  <meta name="keywords" content="Eventino - IT Solution & Service HTML Template" />
-  <meta name="robots" content="INDEX,FOLLOW">
-  <!-- Mobile Specific Metas -->
+  <title>Day 02 Registration</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <!-- Favicons -->
-  <link rel="apple-touch-icon" sizes="57x57" href="assets/img/favicons/apple-icon-57x57.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicons/favicon-32x32.png">
-  <meta name="theme-color" content="#ffffff">
-  <!-- Google Fonts -->
   <link
     href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
     rel="stylesheet">
-  <!-- CSS Files -->
   <link rel="stylesheet" href="assets/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/css/fontawesome.min.css">
   <link rel="stylesheet" href="assets/css/magnific-popup.min.css">
@@ -44,34 +33,29 @@
   </div>
   <div class="container">
     <div class="col-lg-12">
-
       <form class="form-style1 ajax-contact mt-3" action="mail.php" method="post">
         <img src="assets/img/shapes/f-1-1.png" alt="form shape" class="shape-1">
         <img src="assets/img/shapes/f-1-2.png" alt="form shape" class="shape-2">
-        <h3 class="title">Register Now</h3>
-        <span class="subtitle">Robotica 2026</span>
+        <h3 class="title">Robotica 2026</h3>
+        <span class="subtitle">Sample Form Field</span>
         <h1 class="hero-title">In-School Competition</h1>
 
         <div class="row gx-20">
           <div class="col-md-12 form-group">
-            <label for="funame" class="required">Full Name</label>
-            <input class="form-control" type="text" name="fname" id="funame" placeholder="Full Name" required>
+            <input class="form-control" type="text" name="fname" id="funame" placeholder="Full Name *" required>
           </div>
 
           <div class="col-md-12 form-group">
-            <label for="tel" class="required">Phone Number</label>
-            <input class="form-control" type="tel" name="tel" id="tel" placeholder="Phone Number" required>
+            <input class="form-control" type="tel" name="tel" id="tel" placeholder="Phone Number *" required>
           </div>
 
           <div class="col-md-12 form-group">
-            <label for="email" class="required">Email Address</label>
-            <input class="form-control" type="email" name="email" id="email" placeholder="Email Address" required>
+            <input class="form-control" type="email" name="email" id="email" placeholder="Email Address *" required>
           </div>
-          
+
           <div class="col-md-12 form-group">
-            <label for="category" class="required">Category</label>
             <select class="form-control" name="category" id="category" required>
-              <option value="">Select Category</option>
+              <option value="">Select Category *</option>
               <option value="Sub Junior">Sub Junior</option>
               <option value="Junior">Junior</option>
               <option value="Senior">Senior</option>
@@ -79,9 +63,8 @@
           </div>
 
           <div class="col-md-12 form-group">
-            <label for="grade" class="required">Grade</label>
             <select class="form-control" name="grade" id="grade" required>
-              <option value="">Select Grade</option>
+              <option value="">Select Grade *</option>
               <option value="3">3rd Grade</option>
               <option value="4">4th Grade</option>
               <option value="5">5th Grade</option>
@@ -96,39 +79,44 @@
           </div>
 
           <div class="col-md-12 form-group">
-            <label for="school_or_oac" class="required">School Name / OAC</label>
             <select class="form-control" name="school_or_oac" id="school_or_oac" required>
-              <option value="">Select School Name / OAC</option>
-              <option value="OAC">OAC - Vellore</option>
-              <option value="OAC">OAC - Tambaram</option>
-              <option value="School Name">Budding Minds International School</option>
+              <option value="">Select School Name / OAC *</option>
+              <option value="OAC Vellore">OAC - Vellore</option>
+              <option value="OAC Tambaram">OAC - Tambaram</option>
+              <option value="Budding Minds International School">Budding Minds International School</option>
             </select>
           </div>
 
           <div class="col-md-12 form-group">
-            <label for="gender" class="required">Gender</label>
             <select class="form-control" name="gender" id="gender" required>
-              <option value="">Select Gender</option>
+              <option value="">Select Gender *</option>
               <option value="Male">Male</option>
               <option value="Female">Female</option>
             </select>
           </div>
-
+<div class="col-md-12 form-group">
+  <select class="form-control" name="tshirt_size" required>
+    <option value="">Select T-Shirt Size *</option>
+    <option value="XS">XS</option>
+    <option value="S">S</option>
+    <option value="M">M</option>
+    <option value="L">L</option>
+    <option value="XL">XL</option>
+  </select>
+</div>
           <div class="col-md-12 form-group">
-            <label for="hotel_required" class="required">Hotel Required</label>
             <select class="form-control" name="hotel_required" id="hotel_required" required>
-              <option value="">Hotel Required</option>
+              <option value="">Hotel Required *</option>
               <option value="Yes">Yes</option>
               <option value="No">No</option>
             </select>
           </div>
 
           <div class="col-md-12 form-group">
-            <label for="staff_branch" class="required">Staff - Branch</label>
             <select class="form-control" name="staff_branch" id="staff_branch" required>
-              <option value="">Select Staff - Branch</option>
-              <option value="Vellore">Arun - Tambaram</option>
-              <option value="United Arab Emirates (UAE)">Diana - Tambaram</option>
+              <option value="">Select Staff - Branch *</option>
+              <option value="Arun - Tambaram">Arun - Tambaram</option>
+              <option value="Diana - Tambaram">Diana - Tambaram</option>
             </select>
           </div>
 
@@ -141,7 +129,6 @@
     </div>
   </div>
 
-  <!-- JavaScript Files -->
   <script src="assets/js/vendor/jquery-3.6.0.min.js"></script>
   <script src="assets/js/slick.min.js"></script>
   <script src="assets/js/bootstrap.min.js"></script>
@@ -152,5 +139,4 @@
   <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@23.7.3/build/js/intlTelInput.min.js"></script>
   <script src="assets/js/main.js"></script>
 </body>
-
 </html>

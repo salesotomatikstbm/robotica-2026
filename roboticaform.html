@@ -4,26 +4,34 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Registration Form</title>
-  <meta name="author" content="vecuro">
-  <meta name="description" content="Eventino - IT Solution & Service HTML Template">
-  <meta name="keywords" content="Eventino - IT Solution & Service HTML Template" />
-  <meta name="robots" content="INDEX,FOLLOW">
-  <!-- Mobile Specific Metas -->
+  <title>Day 01 Registration</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <!-- Favicons -->
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicons/favicon-32x32.png">
-  <meta name="theme-color" content="#ffffff">
+
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inria+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+
   <!-- CSS Files -->
   <link rel="stylesheet" href="assets/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/css/fontawesome.min.css">
+  <link rel="stylesheet" href="assets/css/magnific-popup.min.css">
+  <link rel="stylesheet" href="assets/css/slick.min.css">
   <link rel="stylesheet" href="assets/css/style.css">
+
+  <style>
+    .required:after {
+      content: " *";
+      color: red;
+    }
+
+    .optional {
+      color: #777;
+      font-size: 14px;
+      font-style: italic;
+    }
+  </style>
 </head>
 
 <body>
-  <!-- Preloader Section -->
   <div class="preloader">
     <button class="vs-btn preloaderCls">Cancel Preloader</button>
     <div class="preloader-inner">
@@ -32,187 +40,140 @@
     </div>
   </div>
 
-  <!-- Hero Section -->
-  <div class="hero-inner">
-    <div class="overlay"></div>
-    <div class="hero-bg" data-bg-src="assets/img/bg/h-1-3.jpg"></div>
-    <div class="container">
-      <div class="row justify-content-between">
-        <div class="col-lg-5">
-          <div class="hero-content">
-            <span class="hero-subtitle">Robotica 2026</span>
-            <h1 class="hero-title">Working Model, Robo Race, Robo Sumo</h1>
-            <ul class="hero-text">
-              <li><strong>Fill the form carefully</strong> with accurate details.</li>
-              <li><strong>Personal Details:</strong> Provide your name and contact number with correct data.</li>
-              <li><strong>Select Level and Grade:</strong> Choose from Level 1-6 and Grade 5th-12th.</li>
-              <li><strong>Enter School Name:</strong> Fill in the student's school name.</li>
-              <li><strong>Select Branch:</strong> Choose your branch location.</li>
-              <li><strong>Gender:</strong> Select the student’s gender (Male/Female).</li>
-              <li><strong>For queries:</strong> Contact us at <strong>+91-6383791772</strong> or email <strong>coo@otomatiks.in</strong>.</li>
-            </ul>
+  <div class="container py-5">
+    <div class="col-lg-12">
+      <form class="form-style1 ajax-contact mt-3" action="mail.php" method="post" enctype="multipart/form-data">
+        <img src="assets/img/shapes/f-1-1.png" alt="form shape" class="shape-1">
+        <img src="assets/img/shapes/f-1-2.png" alt="form shape" class="shape-2">
+       <h3 class="title">Robotica 2026</h3>
+        <span class="subtitle">Sample Form Field</span>
+        <h1 class="hero-title">Day 01 Competition</h1>
+
+        <div class="row gx-20">
+
+          <!-- EVENT -->
+          <div class="col-md-12 form-group">
+            <select class="form-control" name="event" id="event" required>
+              <option value="">Select Event *</option>
+              <option value="Working Model">Working Model</option>
+              <option value="Robo Race">Robo Race</option>
+              <option value="Robo Sumo">Robo Sumo</option>
+              <option value="Drone Race">Drone Race</option>
+            </select>
           </div>
-        </div>
+
         
-        <div class="col-lg-6">
-          <!-- Registration Form -->
-          <form class="form-style1 ajax-contact" action="mail.php" method="post">
-              <img src="assets/img/shapes/f-1-1.png" alt="form shape" class="shape-1">
-            <img src="assets/img/shapes/f-1-2.png" alt="form shape" class="shape-2">
-            <h3 class="title">Register Now</h3>
-            <span class="subtitle">Make A Booking</span>
-            <div class="row gx-20">
-              <!-- EVENT -->
+
+          <!-- ===== STUDENT 1 ===== -->
+          <h5 class="mt-4 mb-2 text-white">Student 1 (Required)</h5>
+
+          <div class="col-md-12 form-group">
+            <input class="form-control" type="text" name="student1_name" placeholder="Student 1 Name *" required>
+          </div>
+
+
+          <div class="col-md-12 form-group">
+            <select class="form-control" name="student1_grade" required>
+              <option value="">Select Grade *</option>
+              <option value="5">5th Grade</option>
+              <option value="6">6th Grade</option>
+              <option value="7">7th Grade</option>
+              <option value="8">8th Grade</option>
+              <option value="9">9th Grade</option>
+              <option value="10">10th Grade</option>
+              <option value="11">11th Grade</option>
+              <option value="12">12th Grade</option>
+            </select>
+          </div>
+
+          <div class="col-md-12 form-group">
+            <input class="form-control" type="text" name="student1_school" placeholder="School Name *" required>
+          </div>
+
+          <div class="col-md-12 form-group">
+            <input class="form-control" type="tel" name="student1_contact" placeholder="Contact Number *" required>
+          </div>
+
+          <div class="col-md-12 form-group">
+            <select class="form-control" name="student1_gender" required>
+              <option value="">Select Gender *</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+            </select>
+          </div>
+
+        
+
+          <!-- ===== STUDENT 2 ===== -->
+          <h5 class="mt-4 mb-2 text-white">Student 2 (Optional)</h5>
+          <p class="optional text-white">* Fill this only if the second member is participating.</p>
+
+          <div class="col-md-12 form-group">
+            <input class="form-control" type="text" name="student2_name" placeholder="Student 2 Name">
+          </div>
+
+         
+
+          <div class="col-md-12 form-group">
+            <select class="form-control" name="student2_grade">
+              <option value="">Select Grade</option>
+              <option value="5">5th Grade</option>
+              <option value="6">6th Grade</option>
+              <option value="7">7th Grade</option>
+              <option value="8">8th Grade</option>
+              <option value="9">9th Grade</option>
+              <option value="10">10th Grade</option>
+              <option value="11">11th Grade</option>
+              <option value="12">12th Grade</option>
+            </select>
+          </div>
+
+          <div class="col-md-12 form-group">
+            <input class="form-control" type="text" name="student2_school" placeholder="School Name">
+          </div>
+
+          <div class="col-md-12 form-group">
+            <input class="form-control" type="tel" name="student2_contact" placeholder="Contact Number">
+          </div>
+
+          <div class="col-md-12 form-group">
+            <select class="form-control" name="student2_gender">
+              <option value="">Select Gender</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+            </select>
+          </div>
+
+       
+   <!-- HOW DID YOU HEAR ABOUT THIS EVENT -->
               <div class="col-md-12 form-group">
-                <select class="form-control" name="event" id="event" required>
-                  <option value="">Select Event</option>
-                  <option value="Working Model">Working Model</option>
-                  <option value="Robo Race">Robo Race</option>
-                  <option value="Robo Sumo">Robo Sumo</option>
+                <select class="form-control" name="source" id="source">
+                  <option value="">How did you hear about this event?</option>
+                  <option value="Friends">Friends</option>
+                  <option value="Instagram">Instagram</option>
+                  <option value="Facebook">Facebook</option>
+                  <option value="Poster">Poster</option>
+                  <option value="School Notice">School Notice</option>
+                  <option value="Website">Website</option>
+                  <option value="Other">Other</option>
                 </select>
               </div>
+         
 
-              <!-- STUDENT 1 NAME -->
-              <div class="col-md-12 form-group">
-                <input class="form-control" type="text" name="student1_name" id="student1_name" placeholder="Student 1 Name" required>
-              </div>
+          <!-- SUBMIT -->
+          <div class="col-md-12 form-group mt-3">
+            <button class="vs-btn style2" type="submit">Submit</button>
+          </div>
 
-              <!-- STUDENT 1 LEVEL -->
-              <div class="col-md-12 form-group">
-                <select class="form-control" name="student1_level" id="student1_level" required>
-                  <option value="">Select Student 1 Level</option>
-                  <option value="Sub-Junior">Sub-Junior</option>
-                  <option value="Junior">Junior</option>
-                  <option value="Senior">Senior</option>
-                </select>
-              </div>
-
-              <!-- STUDENT 1 GRADE -->
-              <div class="col-md-12 form-group">
-                <select class="form-control" name="student1_grade" id="student1_grade" required>
-                  <option value="">Select Student 1 Grade</option>
-                  <option value="5">5th Grade</option>
-                  <option value="6">6th Grade</option>
-                  <option value="7">7th Grade</option>
-                  <option value="8">8th Grade</option>
-                  <option value="9">9th Grade</option>
-                  <option value="10">10th Grade</option>
-                  <option value="11">11th Grade</option>
-                  <option value="12">12th Grade</option>
-                </select>
-              </div>
-
-              <!-- STUDENT 1 SCHOOL -->
-              <div class="col-md-12 form-group">
-                <input class="form-control" type="text" name="student1_school" id="student1_school" placeholder="Student 1 School" required>
-              </div>
-
-              <!-- STUDENT 1 CONTACT NUMBER -->
-              <div class="col-md-12 form-group">
-                <input class="form-control" type="tel" name="student1_contact" id="student1_contact" placeholder="Student 1 Contact Number" required>
-              </div>
-
-              <!-- STUDENT 1 GENDER -->
-              <div class="col-md-12 form-group">
-                <select class="form-control" name="student1_gender" id="student1_gender" required>
-                  <option value="">Select Student 1 Gender</option>
-                  <option value="Male">Male</option>
-                  <option value="Female">Female</option>
-                </select>
-              </div>
-
-              <!-- STUDENT 2 NAME -->
-              <div class="col-md-12 form-group">
-                <input class="form-control" type="text" name="student2_name" id="student2_name" placeholder="Student 2 Name" required>
-              </div>
-
-              <!-- STUDENT 2 LEVEL -->
-              <div class="col-md-12 form-group">
-                <select class="form-control" name="student2_level" id="student2_level" required>
-                  <option value="">Select Student 2 Level</option>
-                  <option value="Sub-Junior">Sub-Junior</option>
-                  <option value="Junior">Junior</option>
-                  <option value="Senior">Senior</option>
-                </select>
-              </div>
-
-              <!-- STUDENT 2 GRADE -->
-              <div class="col-md-12 form-group">
-                <select class="form-control" name="student2_grade" id="student2_grade" required>
-                  <option value="">Select Student 2 Grade</option>
-                  <option value="5">5th Grade</option>
-                  <option value="6">6th Grade</option>
-                  <option value="7">7th Grade</option>
-                  <option value="8">8th Grade</option>
-                  <option value="9">9th Grade</option>
-                  <option value="10">10th Grade</option>
-                  <option value="11">11th Grade</option>
-                  <option value="12">12th Grade</option>
-                </select>
-              </div>
-
-              <!-- STUDENT 2 SCHOOL -->
-              <div class="col-md-12 form-group">
-                <input class="form-control" type="text" name="student2_school" id="student2_school" placeholder="Student 2 School" required>
-              </div>
-
-              <!-- STUDENT 2 CONTACT NUMBER -->
-              <div class="col-md-12 form-group">
-                <input class="form-control" type="tel" name="student2_contact" id="student2_contact" placeholder="Student 2 Contact Number" required>
-              </div>
-
-              <!-- STUDENT 2 GENDER -->
-              <div class="col-md-12 form-group">
-                <select class="form-control" name="student2_gender" id="student2_gender" required>
-                  <option value="">Select Student 2 Gender</option>
-                  <option value="Male">Male</option>
-                  <option value="Female">Female</option>
-                </select>
-              </div>
-
-              <!-- BRANCH -->
-              <div class="col-md-12 form-group">
-                <select class="form-control" name="branch" id="branch" required>
-                  <option value="">Select Branch</option>
-                  <option value="Vellore">Vellore</option>
-                  <option value="United Arab Emirates (UAE)">United Arab Emirates (UAE)</option>
-                  <option value="Parrys, Chennai">Parrys, Chennai</option>
-                  <option value="Annanagar, Chennai">Annanagar, Chennai</option>
-                  <option value="Tambaram">Tambaram</option>
-                  <option value="Salem">Salem</option>
-                  <option value="Attur">Attur</option>
-                  <option value="Namakkal">Namakkal</option>
-                  <option value="Gudiyatham">Gudiyatham</option>
-                  <option value="Dindigul">Dindigul</option>
-                  <option value="Madurai">Madurai</option>
-                  <option value="Theni">Theni</option>
-                  <option value="Mumbai">Mumbai</option>
-                  <option value="United Kingdom (UK)">United Kingdom (UK)</option>
-                  <option value="Thirunelveli">Thirunelveli</option>
-                  <option value="Bangalore">Bangalore</option>
-                  <option value="Karur">Karur</option>
-                  <option value="Pondicherry">Pondicherry</option>
-                  <option value="Kovilambakkam">Kovilambakkam</option>
-                  <option value="Omalur">Omalur</option>
-                </select>
-              </div>
-
-              <!-- Submit Button -->
-              <div class="col-md-12 form-group">
-                <button class="vs-btn style2" type="submit">Register Now</button>
-              </div>
-            </div>
-          </form>
-          <p class="form-messages mb-0 mt-3"></p>
         </div>
-      </div>
+      </form>
+      <p class="form-messages mb-0 mt-3"></p>
     </div>
   </div>
 
-  <!-- JavaScript Files -->
+  <!-- JS Files -->
   <script src="assets/js/vendor/jquery-3.6.0.min.js"></script>
   <script src="assets/js/bootstrap.min.js"></script>
   <script src="assets/js/main.js"></script>
 </body>
-
 </html>
