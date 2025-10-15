@@ -667,9 +667,9 @@
             
             // Payment gateway links (replace with actual links)
             const paymentLinks = {
-                roboRace: 'https://pages.razorpay.com/robotica25',
-                roboSumo: 'https://pages.razorpay.com/robotica25',
-                workingModel: 'https://pages.razorpay.com/robotica25'
+                roboRace: 'https://www.robotica.org.in/',
+                roboSumo: 'https://www.robotica.org.in/',
+                workingModel: 'https://www.robotica.org.in/'
             };
             
             // Open popup when Register button is clicked
