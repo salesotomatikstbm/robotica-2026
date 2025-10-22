@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Robotica 2026</title>
+
+  <!-- Example CSS (you can merge into your main style.css) -->
+  <style>
+    /* Hero Section */
+    .hero-inner {
+      position: relative;
+      text-align: center;
+      color: #fff;
+      padding: 120px 0;
+      overflow: hidden;
+    }
+
+    .hero-inner .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+
+    .hero-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      z-index: 0;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-subtitle {
+      display: block;
+      font-size: 22px;
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+
+    .hero-title {
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .hero-text {
+      font-size: 18px;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    .vs-btn {
+      display: inline-block;
+      padding: 12px 30px;
+      margin: 0 10px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      color: white;
+      background-color: #007bff;
+    }
+
+    .vs-btn:hover {
+      background-color: #0056b3;
+    }
+
+    .vs-btn.style3 {
+      background-color: #ff6600;
+    }
+
+    .vs-btn.style3:hover {
+      background-color: #e65500;
+    }
+
+    /* Popup Overlay */
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    .popup-overlay.active {
+      display: flex;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .popup-content {
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      text-align: center;
+      width: 300px;
+      max-width: 90%;
+      position: relative;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .popup-content h3 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 8px;
+      right: 12px;
+      font-size: 20px;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .event-btn {
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+      padding: 12px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+
+    .event-btn:hover {
+      background-color: #0056b3;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ✅ Hero Section -->
+  <div>
+    <div class="hero-inner style2">
+      <div class="overlay"></div>
+      <div class="hero-bg" style="background-image: url('assets/img/bg/h-2-1.jpg');"></div>
+      <img src="assets/img/shapes/h-1-1.png" alt="shapes" class="hero-shape1">
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col-lg-7 mx-auto">
+            <div class="hero-content style2 text-center">
+              <span class="hero-subtitle">Robotica 2026</span>
+              <h1 class="hero-title">Celebrating Innovation</h1>
+              <p class="hero-text">
+                Robotica’26 ain’t just a competition; it’s a celebration of innovation and creativity in the realm of
+                robotics. Building on the success of our previous competitions, where we welcomed over 5000+
+                participants from 150+ schools across India, this year aims to surpass all expectations.
+              </p>
+              <div class="hero-btns justify-content-center">
+                <a href="#event_details" class="vs-btn">Explore Event</a>
+                <a href="#" class="vs-btn style3 registerBtn">Register Now</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ✅ Popup Section -->
+  <div id="popupOverlay" class="popup-overlay">
+    <div class="popup-content">
+      <button id="closeBtn" class="close-btn">&times;</button>
+      <h3>Select Event</h3>
+      <button id="roboRaceBtn" class="event-btn">Robo Race</button>
+      <button id="roboSumoBtn" class="event-btn">Robo Sumo</button>
+      <button id="workingModelBtn" class="event-btn">Working Model</button>
+    </div>
+  </div>
+
+  <!-- ✅ JavaScript -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Get all register links
+      const registerLinks = document.querySelectorAll('.registerBtn');
+      const popupOverlay = document.getElementById('popupOverlay');
+      const closeBtn = document.getElementById('closeBtn');
+
+      // Event buttons
+      const roboRaceBtn = document.getElementById('roboRaceBtn');
+      const roboSumoBtn = document.getElementById('roboSumoBtn');
+      const workingModelBtn = document.getElementById('workingModelBtn');
+
+      // Payment Links
+      const paymentLinks = {
+        roboRace: 'https://www.robotica.org.in/',
+        roboSumo: 'https://www.robotica.org.in/',
+        workingModel: 'https://www.robotica.org.in/'
+      };
+
+      // Open popup
+      registerLinks.forEach(link => {
+        link.addEventListener('click', function (e) {
+          e.preventDefault();
+          popupOverlay.classList.add('active');
+          document.body.style.overflow = 'hidden';
+        });
+      });
+
+      // Close popup
+      closeBtn.addEventListener('click', function () {
+        popupOverlay.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      });
+
+      // Click outside to close
+      popupOverlay.addEventListener('click', function (e) {
+        if (e.target === popupOverlay) {
+          popupOverlay.classList.remove('active');
+          document.body.style.overflow = 'auto';
+        }
+      });
+
+      // Escape key
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && popupOverlay.classList.contains('active')) {
+          popupOverlay.classList.remove('active');
+          document.body.style.overflow = 'auto';
+        }
+      });
+
+      // Event button click
+      roboRaceBtn.addEventListener('click', function () {
+        window.open(paymentLinks.roboRace, '_blank');
+        popupOverlay.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      });
+
+      roboSumoBtn.addEventListener('click', function () {
+        window.open(paymentLinks.roboSumo, '_blank');
+        popupOverlay.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      });
+
+      workingModelBtn.addEventListener('click', function () {
+        window.open(paymentLinks.workingModel, '_blank');
+        popupOverlay.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      });
+    });
+  </script>
+</body>
+</html>

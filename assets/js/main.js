@@ -654,67 +654,69 @@
 
 
 
- document.addEventListener('DOMContentLoaded', function() {
-            // Get elements
-            const registerBtn = document.getElementById('registerBtn');
-            const popupOverlay = document.getElementById('popupOverlay');
-            const closeBtn = document.getElementById('closeBtn');
-            
-            // Event button elements
-            const roboRaceBtn = document.getElementById('roboRaceBtn');
-            const roboSumoBtn = document.getElementById('roboSumoBtn');
-            const workingModelBtn = document.getElementById('workingModelBtn');
-            
-            // Payment gateway links (replace with actual links)
-            const paymentLinks = {
-                roboRace: 'https://www.robotica.org.in/',
-                roboSumo: 'https://www.robotica.org.in/',
-                workingModel: 'https://www.robotica.org.in/'
-            };
-            
-            // Open popup when Register button is clicked
-            registerBtn.addEventListener('click', function(e) {
-                e.preventDefault();
-                popupOverlay.classList.add('active');
-                document.body.style.overflow = 'hidden';
-            });
-            
-            // Close popup when close button is clicked
-            closeBtn.addEventListener('click', function() {
-                popupOverlay.classList.remove('active');
-                document.body.style.overflow = 'auto';
-            });
-            
-            // Close popup when clicking outside the content
-            popupOverlay.addEventListener('click', function(e) {
-                if (e.target === popupOverlay) {
-                    popupOverlay.classList.remove('active');
-                    document.body.style.overflow = 'auto';
-                }
-            });
-            
-            // Close with Escape key
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape' && popupOverlay.classList.contains('active')) {
-                    popupOverlay.classList.remove('active');
-                    document.body.style.overflow = 'auto';
-                }
-            });
-            
-            // Event button click handlers
-            roboRaceBtn.addEventListener('click', function() {
-                window.open(paymentLinks.roboRace, '_blank');
-            });
-            
-            roboSumoBtn.addEventListener('click', function() {
-                window.open(paymentLinks.roboSumo, '_blank');
-            });
-            
-            workingModelBtn.addEventListener('click', function() {
-                window.open(paymentLinks.workingModel, '_blank');
-            });
-        });
+document.addEventListener('DOMContentLoaded', function () {
+  // Select all Register buttons or links (any type)
+  const registerBtns = document.querySelectorAll('#registerBtn');
+  const popupOverlay = document.getElementById('popupOverlay');
+  const closeBtn = document.getElementById('closeBtn');
 
+  // Event buttons inside popup
+  const roboRaceBtn = document.getElementById('roboRaceBtn');
+  const roboSumoBtn = document.getElementById('roboSumoBtn');
+  const workingModelBtn = document.getElementById('workingModelBtn');
+  const droneRaceBtn = document.getElementById('droneRaceBtn');
+
+  // Payment links
+  const paymentLinks = {
+    roboRace: 'https://www.robotica.org.in/',
+    roboSumo: 'https://www.robotica.org.in/',
+    workingModel: 'https://www.robotica.org.in/',
+    droneRace: 'https://www.robotica.org.in/'
+  };
+
+  // 🟢 Open popup for any "Register Now" button or link
+  registerBtns.forEach(btn => {
+    btn.addEventListener('click', function (e) {
+      e.preventDefault(); // stop link or form submission
+      popupOverlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  // 🔴 Close popup when clicking the close button
+  closeBtn.addEventListener('click', function () {
+    popupOverlay.classList.remove('active');
+    document.body.style.overflow = 'auto';
+  });
+
+  // 🟡 Close popup by clicking outside
+  popupOverlay.addEventListener('click', function (e) {
+    if (e.target === popupOverlay) {
+      popupOverlay.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+  });
+
+  // 🔵 Close popup on ESC key
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && popupOverlay.classList.contains('active')) {
+      popupOverlay.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+  });
+
+  // 🟣 Event selection redirection
+  const redirectToPayment = (url) => {
+    window.open(url, '_blank');
+    popupOverlay.classList.remove('active');
+    document.body.style.overflow = 'auto';
+  };
+
+  roboRaceBtn.addEventListener('click', () => redirectToPayment(paymentLinks.roboRace));
+  roboSumoBtn.addEventListener('click', () => redirectToPayment(paymentLinks.roboSumo));
+  workingModelBtn.addEventListener('click', () => redirectToPayment(paymentLinks.workingModel));
+  droneRaceBtn.addEventListener('click', () => redirectToPayment(paymentLinks.droneRace));
+});
 
 
 
