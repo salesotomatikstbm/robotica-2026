@@ -1,5 +1,6 @@
 <!doctype html>
 <html class="no-js" lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -18,7 +19,9 @@
       padding: 30px;
     }
 
-    h3, h1 {
+    h1,
+    h3,
+    h5 {
       color: #fff;
     }
 
@@ -123,13 +126,24 @@
       background: #ff854b;
     }
 
-    h5 {
-      margin-top: 25px;
+    .instruction-box {
+      background: rgba(255, 255, 255, 0.1);
+      border-left: 4px solid #ff6b35;
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 25px;
       color: #fff;
     }
 
+    #totalAmount {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-top: 20px;
+      color: #ffda79;
+    }
   </style>
 </head>
+
 <body>
   <div class="container py-4">
     <div class="col-lg-10 mx-auto">
@@ -137,10 +151,37 @@
         <h3>Robotica 2026</h3>
         <h1>Day 01 Competition Registration</h1>
 
+        <div class="instruction-box">
+          <p>🔹 Each registration allows a maximum of <strong>2 participants</strong> per team.</p>
+          
+          <p>🔹 For additional events with a different team, please submit a new registration form.</p>
+          <p>🔹 <strong>Accommodation will be provided at VIT University Hostel</strong> for participants selecting
+            "Yes" below (Nominal cost applicable).</p>
+        </div>
+
         <!-- EVENT SELECTION -->
-        <h5>Select Event</h5>
+        <h5>Select Events</h5>
         <div class="event-selection">
-<div class="event-card" data-event="Robo Race" data-price="1000">
+
+
+          <div class="event-card" data-event="Event Entry " data-price="10">
+            <div class="event-info">
+              <h6>Event Entry <span class="tag">Venue Only</span></h6>
+              <p>Sales end on <strong>Oct 25, 2025</strong></p>
+            </div>
+            <div class="event-price">
+              ₹10.00
+              <div class="counter">
+                <button type="button" class="minus">-</button>
+                <input type="text" value="0" readonly>
+                <button type="button" class="plus">+</button>
+              </div>
+            </div>
+          </div>
+
+
+
+          <div class="event-card" data-event="Working Model" data-price="1000">
             <div class="event-info">
               <h6>Working Model <span class="tag">Venue Only</span></h6>
               <p>Sales end on <strong>Oct 25, 2025</strong></p>
@@ -154,6 +195,7 @@
               </div>
             </div>
           </div>
+
           <div class="event-card" data-event="Robo Race" data-price="1000">
             <div class="event-info">
               <h6>Robo Race <span class="tag">Venue Only</span></h6>
@@ -200,7 +242,9 @@
           </div>
         </div>
 
-        <input type="hidden" name="event" id="selectedEvent" required>
+        <div id="totalAmount">Total: ₹0.00</div>
+        <br>
+        <input type="hidden" name="selectedEvents" id="selectedEvents">
 
         <!-- PARTICIPANT COUNT -->
         <select class="form-control" id="participantCount" name="participantCount" required>
@@ -209,98 +253,136 @@
           <option value="2">2 Participants</option>
         </select>
 
-        <!-- ===== STUDENT 1 ===== -->
+        <!-- STUDENT DETAILS -->
         <div id="student1Section">
           <h5>Student 1 Details</h5>
           <div class="row">
-            <div class="col-md-6"><input class="form-control" type="text" name="student1_name" placeholder="First Name *" required></div>
-              <div class="col-md-6"><input class="form-control" type="text" name="student1_name" placeholder="Last Name " required></div>
-            <div class="col-md-6"><input class="form-control" type="number" name="student1_age" placeholder="Age *" required></div>
+            <div class="col-md-6"><input class="form-control" type="text" name="student1_fname"
+                placeholder="First Name *" required></div>
+            <div class="col-md-6"><input class="form-control" type="text" name="student1_lname" placeholder="Last Name"
+                required></div>
+            <div class="col-md-6"><input class="form-control" type="number" name="student1_age" placeholder="Age *"
+                required></div>
             <div class="col-md-6">
               <select class="form-control" name="student1_gender" required>
                 <option value="">Select Gender *</option>
-                <option>Male</option><option>Female</option>
+                <option>Male</option>
+                <option>Female</option>
               </select>
             </div>
-            <div class="col-md-6"><input class="form-control" type="tel" name="student1_contact" placeholder="Contact Number *" required></div>
-            <div class="col-md-6"><input class="form-control" type="email" name="student1_email" placeholder="Email (Optional)"></div>
+            <div class="col-md-6"><input class="form-control" type="tel" name="student1_contact"
+                placeholder="Contact Number *" required></div>
+            <div class="col-md-6"><input class="form-control" type="email" name="student1_email" placeholder="Email">
+            </div>
             <div class="col-md-6">
               <select class="form-control grade" name="student1_grade" id="student1_grade" required>
                 <option value="">Select Grade *</option>
-                <option>3</option><option>4</option><option>5</option>
-                <option>6</option><option>7</option><option>8</option>
-                <option>9</option><option>10</option><option>11</option><option>12</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+                <option>9</option>
+                <option>10</option>
+                <option>11</option>
+                <option>12</option>
               </select>
             </div>
-            <div class="col-md-6"><input class="form-control category" type="text" name="student1_category" id="student1_category" placeholder="Category (Auto Selected)" readonly></div>
+            <div class="col-md-6"><input class="form-control category" type="text" name="student1_category"
+                id="student1_category" placeholder="Category (Auto Selected)" readonly></div>
           </div>
         </div>
 
-        <!-- ===== STUDENT 2 ===== -->
         <div id="student2Section">
           <h5>Student 2 Details</h5>
           <div class="row">
-            <div class="col-md-6"><input class="form-control" type="text" name="student2_name" placeholder="First Name *"></div>
-              <div class="col-md-6"><input class="form-control" type="text" name="student1_name" placeholder="Last Name " required></div>
-            <div class="col-md-6"><input class="form-control" type="number" name="student2_age" placeholder="Age *"></div>
+            <div class="col-md-6"><input class="form-control" type="text" name="student2_fname"
+                placeholder="First Name *"></div>
+            <div class="col-md-6"><input class="form-control" type="text" name="student2_lname" placeholder="Last Name">
+            </div>
+            <div class="col-md-6"><input class="form-control" type="number" name="student2_age" placeholder="Age *">
+            </div>
             <div class="col-md-6">
               <select class="form-control" name="student2_gender">
                 <option value="">Select Gender *</option>
-                <option>Male</option><option>Female</option>
+                <option>Male</option>
+                <option>Female</option>
               </select>
             </div>
-            <div class="col-md-6"><input class="form-control" type="tel" name="student2_contact" placeholder="Contact Number *"></div>
-            <div class="col-md-6"><input class="form-control" type="email" name="student2_email" placeholder="Email (Optional)"></div>
+            <div class="col-md-6"><input class="form-control" type="tel" name="student2_contact"
+                placeholder="Contact Number *"></div>
+            <div class="col-md-6"><input class="form-control" type="email" name="student2_email" placeholder="Email">
+            </div>
             <div class="col-md-6">
               <select class="form-control grade" name="student2_grade" id="student2_grade">
                 <option value="">Select Grade *</option>
-                <option>3</option><option>4</option><option>5</option>
-                <option>6</option><option>7</option><option>8</option>
-                <option>9</option><option>10</option><option>11</option><option>12</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+                <option>9</option>
+                <option>10</option>
+                <option>11</option>
+                <option>12</option>
               </select>
             </div>
-            <div class="col-md-6"><input class="form-control category" type="text" name="student2_category" id="student2_category" placeholder="Category (Auto Selected)" readonly></div>
+            <div class="col-md-6"><input class="form-control category" type="text" name="student2_category"
+                id="student2_category" placeholder="Category (Auto Selected)" readonly></div>
           </div>
         </div>
 
         <!-- COMMON DETAILS -->
-        <h5>School & Address</h5>
+        <h5>Address & School</h5>
         <div class="row">
-          <div class="col-md-6"><input class="form-control" type="text" name="address" placeholder="Address *" required></div>
-          <div class="col-md-6"><input class="form-control" type="text" name="school" placeholder="School Name *" required></div>
-          <div class="col-md-6"><input class="form-control" type="text" name="district" placeholder="District *" required></div>
-          <div class="col-md-6"><input class="form-control" type="text" name="pincode" placeholder="Pin Code *" required></div>
+          <div class="col-md-6"><input class="form-control" type="text" name="address" placeholder="Address *" required>
+          </div>
+          <div class="col-md-6"><input class="form-control" type="text" name="district" placeholder="District *"
+              required></div>
+          <div class="col-md-6"><input class="form-control" type="text" name="pincode" placeholder="Pin Code *"
+              required></div>
+          <div class="col-md-6">
+            <select class="form-control" name="robotics" required>
+              <option value="">Does your school have Robotics? *</option>
+              <option>Yes</option>
+              <option>No</option>
+            </select>
+          </div>
         </div>
+        <div class="col-md-12"><input class="form-control" type="text" name="school" placeholder="School Name *"
+            required></div>
 
-        <select class="form-control" name="robotics" required>
-          <option value="">Does your school have Robotics? *</option>
-          <option>Yes</option><option>No</option>
-        </select>
-
-        <input class="form-control" type="text" name="mentor" placeholder="Mentor Name (Optional)">
-        <input class="form-control" type="tel" name="mentor_contact" placeholder="Mentor Contact (Optional)">
+        <input class="form-control" type="text" name="mentor" placeholder="Mentor Name">
+        <input class="form-control" type="tel" name="mentor_contact" placeholder="Mentor Contact">
 
         <select class="form-control" name="Accommodation" required>
           <option value="">Accommodation Required (Nominal Cost Applicable) *</option>
-          <option>Yes</option><option>No</option>
+          <option>Yes (VIT University Hostel)</option>
+          <option>No</option>
         </select>
 
-        <select class="form-control" name="source">
+        <select class="form-control" id="sourceSelect" name="source">
           <option value="">How did you hear about this event?</option>
-          <option>Friends</option><option>Instagram</option><option>Facebook</option>
-          <option>Poster</option><option>School Notice</option><option>Website</option><option>Other</option>
+          <option>Youtube</option>
+          <option>Instagram</option>
+          <option>Facebook</option>
+          <option>Newspaper</option>
+          <option>School Notice</option>
+          <option>Other</option>
         </select>
+
+        <input class="form-control" type="text" id="otherSourceField" name="otherSource" placeholder="Please specify"
+          style="display:none;">
 
         <button class="vs-btn mt-3" type="submit">Submit</button>
       </form>
     </div>
   </div>
 
-  <script src="assets/js/vendor/jquery-3.6.0.min.js"></script>
-  <script src="assets/js/bootstrap.min.js"></script>
-
   <script>
-    // Category auto-selection
+    // Auto category logic
     function getCategory(grade) {
       grade = parseInt(grade);
       if (grade >= 3 && grade <= 5) return "Sub-Junior";
@@ -310,51 +392,84 @@
     }
 
     document.querySelectorAll('.grade').forEach(select => {
-      select.addEventListener('change', function() {
+      select.addEventListener('change', function () {
         const grade = this.value;
         const categoryField = document.querySelector(`#${this.id.replace('grade', 'category')}`);
         if (categoryField) categoryField.value = getCategory(grade);
       });
     });
 
-    // Show/hide Student 2
-    document.addEventListener('DOMContentLoaded', function() {
+    // Show/hide student 2
+    document.addEventListener('DOMContentLoaded', function () {
       const participantSelect = document.getElementById('participantCount');
       const s2 = document.getElementById('student2Section');
       s2.style.display = 'none';
-
-      participantSelect.addEventListener('change', function() {
+      participantSelect.addEventListener('change', function () {
         s2.style.display = this.value === '2' ? 'block' : 'none';
       });
     });
 
-    // Event selection logic
+    // Multiple event selection & total calculation
     const cards = document.querySelectorAll('.event-card');
-    const selectedEvent = document.getElementById('selectedEvent');
+    const selectedEventsInput = document.getElementById('selectedEvents');
+    const totalAmountEl = document.getElementById('totalAmount');
+    let selectedEvents = [];
+
+    function updateTotal() {
+      let total = 0;
+      selectedEvents = [];
+      cards.forEach(card => {
+        const qty = parseInt(card.querySelector('.counter input').value);
+        if (qty > 0) {
+          total += parseInt(card.dataset.price) * qty;
+          selectedEvents.push(card.dataset.event);
+        }
+      });
+      totalAmountEl.textContent = "Total: ₹" + total.toFixed(2);
+      selectedEventsInput.value = selectedEvents.join(", ");
+    }
 
     cards.forEach(card => {
-      const input = card.querySelector('.counter input');
       const plus = card.querySelector('.plus');
       const minus = card.querySelector('.minus');
-
-      card.addEventListener('click', () => {
-        cards.forEach(c => c.classList.remove('active'));
-        card.classList.add('active');
-        selectedEvent.value = card.dataset.event;
-      });
+      const input = card.querySelector('.counter input');
 
       plus.addEventListener('click', (e) => {
         e.stopPropagation();
-        input.value = parseInt(input.value) + 1;
+        input.value = 1;
         card.classList.add('active');
-        selectedEvent.value = card.dataset.event;
+        updateTotal();
       });
 
       minus.addEventListener('click', (e) => {
         e.stopPropagation();
-        if (parseInt(input.value) > 0) input.value = parseInt(input.value) - 1;
+        input.value = 0;
+        card.classList.remove('active');
+        updateTotal();
       });
+
+      card.addEventListener('click', (e) => {
+        e.stopPropagation();
+        input.value = input.value === "1" ? "0" : "1";
+        card.classList.toggle('active');
+        updateTotal();
+      });
+    });
+
+    // Show "Other" field
+    const sourceSelect = document.getElementById('sourceSelect');
+    const otherField = document.getElementById('otherSourceField');
+    sourceSelect.addEventListener('change', function () {
+      if (this.value === 'Other') {
+        otherField.style.display = 'block';
+        otherField.required = true;
+      } else {
+        otherField.style.display = 'none';
+        otherField.required = false;
+        otherField.value = '';
+      }
     });
   </script>
 </body>
+
 </html>
