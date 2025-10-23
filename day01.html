@@ -1,280 +1,308 @@
 <!doctype html>
-<html class="no-js" lang="zxx">
-
+<html class="no-js" lang="en">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <title>Day 01 Registration</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <!-- Google Fonts -->
+  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Inria+Sans:wght@300;400;700&display=swap" rel="stylesheet">
-
-  <!-- CSS Files -->
   <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-  <link rel="stylesheet" href="assets/css/fontawesome.min.css">
-  <link rel="stylesheet" href="assets/css/magnific-popup.min.css">
-  <link rel="stylesheet" href="assets/css/slick.min.css">
-  <link rel="stylesheet" href="assets/css/style.css">
 
   <style>
     body {
       font-family: 'Inria Sans', sans-serif;
+      background: #0c1d36;
+      color: #fff;
+      padding: 30px;
     }
 
-    .required:after {
+    h3, h1 {
+      color: #fff;
+    }
+
+    .required::after {
       content: " *";
       color: red;
     }
 
-    h5 {
-      margin-top: 30px;
+    .form-control {
+      border-radius: 10px;
+      padding: 10px 12px;
+      margin-bottom: 10px;
     }
+
+    /* ===== Event Card Section ===== */
+    .event-selection {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+
+    .event-card {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: all 0.3s;
+    }
+
+    .event-card:hover {
+      border-color: #ffda79;
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .event-card.active {
+      border-color: #ff6b35;
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .event-info h6 {
+      font-size: 1rem;
+      margin: 0;
+      color: #fff;
+    }
+
+    .event-info .tag {
+      background: #dbeafe;
+      color: #0c1d36;
+      font-size: 0.7rem;
+      border-radius: 8px;
+      padding: 2px 8px;
+      margin-left: 8px;
+    }
+
+    .event-price {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      color: #fff;
+      font-weight: bold;
+    }
+
+    .counter {
+      display: flex;
+      align-items: center;
+      background: #fff;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .counter button {
+      background: none;
+      border: none;
+      padding: 5px 10px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .counter input {
+      width: 40px;
+      text-align: center;
+      border: none;
+      background: #fff;
+    }
+
+    .vs-btn {
+      background: #ff6b35;
+      border: none;
+      padding: 10px 25px;
+      border-radius: 10px;
+      color: #fff;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .vs-btn:hover {
+      background: #ff854b;
+    }
+
+    h5 {
+      margin-top: 25px;
+      color: #fff;
+    }
+
   </style>
 </head>
-
 <body>
-  <div class="container py-5">
-    <div class="col-lg-12">
-      <form class="form-style1 ajax-contact mt-3" action="mail.php" method="post" enctype="multipart/form-data">
-        <h3 class="title text-white">Robotica 2026</h3>
-        <span class="subtitle text-white">Registration Form</span>
-        <h1 class="hero-title text-white">Day 01 Competition</h1>
+  <div class="container py-4">
+    <div class="col-lg-10 mx-auto">
+      <form class="form-style1" id="regForm" action="mail.php" method="post" enctype="multipart/form-data">
+        <h3>Robotica 2026</h3>
+        <h1>Day 01 Competition Registration</h1>
 
-        <div class="row gx-20">
-
-          <!-- EVENT -->
-          <div class="col-md-12 form-group">
-            <select class="form-control" name="event" id="event" required>
-              <option value="">Select Event *</option>
-              <option value="Working Model">Working Model</option>
-              <option value="Robo Race">Robo Race</option>
-              <option value="Robo Sumo">Robo Sumo</option>
-              <option value="Drone Race">Drone Race</option>
-            </select>
+        <!-- EVENT SELECTION -->
+        <h5>Select Event</h5>
+        <div class="event-selection">
+<div class="event-card" data-event="Robo Race" data-price="1000">
+            <div class="event-info">
+              <h6>Working Model <span class="tag">Venue Only</span></h6>
+              <p>Sales end on <strong>Oct 25, 2025</strong></p>
+            </div>
+            <div class="event-price">
+              ₹1,000.00
+              <div class="counter">
+                <button type="button" class="minus">-</button>
+                <input type="text" value="0" readonly>
+                <button type="button" class="plus">+</button>
+              </div>
+            </div>
+          </div>
+          <div class="event-card" data-event="Robo Race" data-price="1000">
+            <div class="event-info">
+              <h6>Robo Race <span class="tag">Venue Only</span></h6>
+              <p>Sales end on <strong>Oct 25, 2025</strong></p>
+            </div>
+            <div class="event-price">
+              ₹1,000.00
+              <div class="counter">
+                <button type="button" class="minus">-</button>
+                <input type="text" value="0" readonly>
+                <button type="button" class="plus">+</button>
+              </div>
+            </div>
           </div>
 
-          <!-- Participant Selection -->
-          <div class="col-md-12 form-group">
-            <select class="form-control" id="participantCount" name="participantCount" required>
-              <option value="">Select Number of Participants *</option>
-              <option value="1">1 Participant</option>
-              <option value="2">2 Participants</option>
-            </select>
+          <div class="event-card" data-event="Robo Sumo" data-price="1000">
+            <div class="event-info">
+              <h6>Robo Sumo <span class="tag">Venue Only</span></h6>
+              <p>Sales end on <strong>Oct 25, 2025</strong></p>
+            </div>
+            <div class="event-price">
+              ₹1,000.00
+              <div class="counter">
+                <button type="button" class="minus">-</button>
+                <input type="text" value="0" readonly>
+                <button type="button" class="plus">+</button>
+              </div>
+            </div>
           </div>
 
-          <!-- ===== STUDENT 1 ===== -->
-          <div id="student1Section">
-            <h5 class="text-white">Student 1 Details</h5>
-
-            <div class="col-md-12 form-group">
-              <input class="form-control" type="text" name="student1_name" placeholder="Student 1 Name *" required>
+          <div class="event-card" data-event="Drone Race" data-price="1000">
+            <div class="event-info">
+              <h6>Drone Race <span class="tag">Venue Only</span></h6>
+              <p>Sales end on <strong>Oct 25, 2025</strong></p>
             </div>
-
-            <div class="col-md-12 form-group">
-              <input class="form-control" type="number" name="student1_age" placeholder="Age *" required>
+            <div class="event-price">
+              ₹1,000.00
+              <div class="counter">
+                <button type="button" class="minus">-</button>
+                <input type="text" value="0" readonly>
+                <button type="button" class="plus">+</button>
+              </div>
             </div>
+          </div>
+        </div>
 
-            <div class="col-md-12 form-group">
+        <input type="hidden" name="event" id="selectedEvent" required>
+
+        <!-- PARTICIPANT COUNT -->
+        <select class="form-control" id="participantCount" name="participantCount" required>
+          <option value="">Select Number of Participants *</option>
+          <option value="1">1 Participant</option>
+          <option value="2">2 Participants</option>
+        </select>
+
+        <!-- ===== STUDENT 1 ===== -->
+        <div id="student1Section">
+          <h5>Student 1 Details</h5>
+          <div class="row">
+            <div class="col-md-6"><input class="form-control" type="text" name="student1_name" placeholder="First Name *" required></div>
+              <div class="col-md-6"><input class="form-control" type="text" name="student1_name" placeholder="Last Name " required></div>
+            <div class="col-md-6"><input class="form-control" type="number" name="student1_age" placeholder="Age *" required></div>
+            <div class="col-md-6">
               <select class="form-control" name="student1_gender" required>
                 <option value="">Select Gender *</option>
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
+                <option>Male</option><option>Female</option>
               </select>
             </div>
-
-            <div class="col-md-12 form-group">
-              <input class="form-control" type="tel" name="student1_contact" placeholder="Contact Number *" required>
-            </div>
-
-            <div class="col-md-12 form-group">
-              <input class="form-control" type="email" name="student1_email" placeholder="Email *" required>
-            </div>
-
-            <div class="col-md-12 form-group">
+            <div class="col-md-6"><input class="form-control" type="tel" name="student1_contact" placeholder="Contact Number *" required></div>
+            <div class="col-md-6"><input class="form-control" type="email" name="student1_email" placeholder="Email (Optional)"></div>
+            <div class="col-md-6">
               <select class="form-control grade" name="student1_grade" id="student1_grade" required>
                 <option value="">Select Grade *</option>
-                <option value="3">3rd Grade</option>
-                <option value="4">4th Grade</option>
-                <option value="5">5th Grade</option>
-                <option value="6">6th Grade</option>
-                <option value="7">7th Grade</option>
-                <option value="8">8th Grade</option>
-                <option value="9">9th Grade</option>
-                <option value="10">10th Grade</option>
-                <option value="11">11th Grade</option>
-                <option value="12">12th Grade</option>
+                <option>3</option><option>4</option><option>5</option>
+                <option>6</option><option>7</option><option>8</option>
+                <option>9</option><option>10</option><option>11</option><option>12</option>
               </select>
             </div>
-
-            <div class="col-md-12 form-group">
-              <input class="form-control category" type="text" name="student1_category" id="student1_category"
-                placeholder="Category (Auto Selected)" readonly>
-            </div>
-
-            <div class="col-md-12 form-group">
-              <input class="form-control" type="text" name="student1_address" placeholder="Address *" required>
-            </div>
-
-            <div class="col-md-12 form-group">
-              <input class="form-control" type="text" name="student1_district" placeholder="District *" required>
-            </div>
-
-            <div class="col-md-12 form-group">
-              <input class="form-control" type="text" name="student1_pincode" placeholder="Pin Code *" required>
-            </div>
-
-            <div class="col-md-12 form-group">
-              <input class="form-control" type="text" name="student1_school" placeholder="School Name *" required>
-            </div>
-
-            <div class="col-md-12 form-group">
-              <select class="form-control" name="student1_robotics" required>
-                <option value="">Does your school have Robotics? *</option>
-                <option value="Yes">Yes</option>
-                <option value="No">No</option>
-              </select>
-            </div>
-
-            <div class="col-md-12 form-group">
-              <input class="form-control" type="text" name="student1_mentor" placeholder="Mentor Name (if applicable)">
-            </div>
-
-            <div class="col-md-12 form-group">
-              <input class="form-control" type="tel" name="student1_mentor_contact" placeholder="Mentor Contact">
-            </div>
-
-            <div class="col-md-12 form-group">
-              <select class="form-control" name="student1_hostel" required>
-                <option value="">Hostel Required (Nominal Cost Applicable) *</option>
-                <option value="Yes">Yes</option>
-                <option value="No">No</option>
-              </select>
-            </div>
+            <div class="col-md-6"><input class="form-control category" type="text" name="student1_category" id="student1_category" placeholder="Category (Auto Selected)" readonly></div>
           </div>
-
-          <!-- ===== STUDENT 2 ===== -->
-          <div id="student2Section">
-            <h5 class="text-white">Student 2 Details</h5>
-
-            <div class="col-md-12 form-group">
-              <input class="form-control" type="text" name="student2_name" placeholder="Student 2 Name *" required>
-            </div>
-
-            <div class="col-md-12 form-group">
-              <input class="form-control" type="number" name="student2_age" placeholder="Age *" required>
-            </div>
-
-            <div class="col-md-12 form-group">
-              <select class="form-control" name="student2_gender" required>
-                <option value="">Select Gender *</option>
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-              </select>
-            </div>
-
-            <div class="col-md-12 form-group">
-              <input class="form-control" type="tel" name="student2_contact" placeholder="Contact Number *" required>
-            </div>
-
-            <div class="col-md-12 form-group">
-              <input class="form-control" type="email" name="student2_email" placeholder="Email *" required>
-            </div>
-
-            <div class="col-md-12 form-group">
-              <select class="form-control grade" name="student2_grade" id="student2_grade" required>
-                <option value="">Select Grade *</option>
-                <option value="3">3rd Grade</option>
-                <option value="4">4th Grade</option>
-                <option value="5">5th Grade</option>
-                <option value="6">6th Grade</option>
-                <option value="7">7th Grade</option>
-                <option value="8">8th Grade</option>
-                <option value="9">9th Grade</option>
-                <option value="10">10th Grade</option>
-                <option value="11">11th Grade</option>
-                <option value="12">12th Grade</option>
-              </select>
-            </div>
-
-            <div class="col-md-12 form-group">
-              <input class="form-control category" type="text" name="student2_category" id="student2_category"
-                placeholder="Category (Auto Selected)" readonly>
-            </div>
-
-            <div class="col-md-12 form-group">
-              <input class="form-control" type="text" name="student2_address" placeholder="Address *" required>
-            </div>
-
-            <div class="col-md-12 form-group">
-              <input class="form-control" type="text" name="student2_district" placeholder="District *" required>
-            </div>
-
-            <div class="col-md-12 form-group">
-              <input class="form-control" type="text" name="student2_pincode" placeholder="Pin Code *" required>
-            </div>
-
-            <div class="col-md-12 form-group">
-              <input class="form-control" type="text" name="student2_school" placeholder="School Name *" required>
-            </div>
-
-            <div class="col-md-12 form-group">
-              <select class="form-control" name="student2_robotics" required>
-                <option value="">Does your school have Robotics? *</option>
-                <option value="Yes">Yes</option>
-                <option value="No">No</option>
-              </select>
-            </div>
-
-            <div class="col-md-12 form-group">
-              <input class="form-control" type="text" name="student2_mentor" placeholder="Mentor Name (if applicable)">
-            </div>
-
-            <div class="col-md-12 form-group">
-              <input class="form-control" type="tel" name="student2_mentor_contact" placeholder="Mentor Contact">
-            </div>
-
-            <div class="col-md-12 form-group">
-              <select class="form-control" name="student2_hostel" required>
-                <option value="">Hostel Required (Nominal Cost Applicable) *</option>
-                <option value="Yes">Yes</option>
-                <option value="No">No</option>
-              </select>
-            </div>
-          </div>
-
-          <!-- HOW DID YOU HEAR -->
-          <div class="col-md-12 form-group">
-            <select class="form-control" name="source" id="source">
-              <option value="">How did you hear about this event?</option>
-              <option value="Friends">Friends</option>
-              <option value="Instagram">Instagram</option>
-              <option value="Facebook">Facebook</option>
-              <option value="Poster">Poster</option>
-              <option value="School Notice">School Notice</option>
-              <option value="Website">Website</option>
-              <option value="Other">Other</option>
-            </select>
-          </div>
-
-          <!-- SUBMIT -->
-          <div class="col-md-12 form-group mt-3">
-            <button class="vs-btn style2" type="submit">Submit</button>
-          </div>
-
         </div>
+
+        <!-- ===== STUDENT 2 ===== -->
+        <div id="student2Section">
+          <h5>Student 2 Details</h5>
+          <div class="row">
+            <div class="col-md-6"><input class="form-control" type="text" name="student2_name" placeholder="First Name *"></div>
+              <div class="col-md-6"><input class="form-control" type="text" name="student1_name" placeholder="Last Name " required></div>
+            <div class="col-md-6"><input class="form-control" type="number" name="student2_age" placeholder="Age *"></div>
+            <div class="col-md-6">
+              <select class="form-control" name="student2_gender">
+                <option value="">Select Gender *</option>
+                <option>Male</option><option>Female</option>
+              </select>
+            </div>
+            <div class="col-md-6"><input class="form-control" type="tel" name="student2_contact" placeholder="Contact Number *"></div>
+            <div class="col-md-6"><input class="form-control" type="email" name="student2_email" placeholder="Email (Optional)"></div>
+            <div class="col-md-6">
+              <select class="form-control grade" name="student2_grade" id="student2_grade">
+                <option value="">Select Grade *</option>
+                <option>3</option><option>4</option><option>5</option>
+                <option>6</option><option>7</option><option>8</option>
+                <option>9</option><option>10</option><option>11</option><option>12</option>
+              </select>
+            </div>
+            <div class="col-md-6"><input class="form-control category" type="text" name="student2_category" id="student2_category" placeholder="Category (Auto Selected)" readonly></div>
+          </div>
+        </div>
+
+        <!-- COMMON DETAILS -->
+        <h5>School & Address</h5>
+        <div class="row">
+          <div class="col-md-6"><input class="form-control" type="text" name="address" placeholder="Address *" required></div>
+          <div class="col-md-6"><input class="form-control" type="text" name="school" placeholder="School Name *" required></div>
+          <div class="col-md-6"><input class="form-control" type="text" name="district" placeholder="District *" required></div>
+          <div class="col-md-6"><input class="form-control" type="text" name="pincode" placeholder="Pin Code *" required></div>
+        </div>
+
+        <select class="form-control" name="robotics" required>
+          <option value="">Does your school have Robotics? *</option>
+          <option>Yes</option><option>No</option>
+        </select>
+
+        <input class="form-control" type="text" name="mentor" placeholder="Mentor Name (Optional)">
+        <input class="form-control" type="tel" name="mentor_contact" placeholder="Mentor Contact (Optional)">
+
+        <select class="form-control" name="Accommodation" required>
+          <option value="">Accommodation Required (Nominal Cost Applicable) *</option>
+          <option>Yes</option><option>No</option>
+        </select>
+
+        <select class="form-control" name="source">
+          <option value="">How did you hear about this event?</option>
+          <option>Friends</option><option>Instagram</option><option>Facebook</option>
+          <option>Poster</option><option>School Notice</option><option>Website</option><option>Other</option>
+        </select>
+
+        <button class="vs-btn mt-3" type="submit">Submit</button>
       </form>
-      <p class="form-messages mb-0 mt-3"></p>
     </div>
   </div>
 
-  <!-- JS Files -->
   <script src="assets/js/vendor/jquery-3.6.0.min.js"></script>
   <script src="assets/js/bootstrap.min.js"></script>
 
   <script>
-    // Auto select category based on grade
+    // Category auto-selection
     function getCategory(grade) {
+      grade = parseInt(grade);
       if (grade >= 3 && grade <= 5) return "Sub-Junior";
       if (grade >= 6 && grade <= 8) return "Junior";
       if (grade >= 9 && grade <= 12) return "Senior";
@@ -282,39 +310,51 @@
     }
 
     document.querySelectorAll('.grade').forEach(select => {
-      select.addEventListener('change', function () {
-        const grade = parseInt(this.value);
+      select.addEventListener('change', function() {
+        const grade = this.value;
         const categoryField = document.querySelector(`#${this.id.replace('grade', 'category')}`);
         if (categoryField) categoryField.value = getCategory(grade);
       });
     });
 
-    // Show/hide student sections based on participant count
-    document.addEventListener('DOMContentLoaded', function () {
+    // Show/hide Student 2
+    document.addEventListener('DOMContentLoaded', function() {
       const participantSelect = document.getElementById('participantCount');
-      const student1Section = document.getElementById('student1Section');
-      const student2Section = document.getElementById('student2Section');
+      const s2 = document.getElementById('student2Section');
+      s2.style.display = 'none';
 
-      student1Section.style.display = 'none';
-      student2Section.style.display = 'none';
+      participantSelect.addEventListener('change', function() {
+        s2.style.display = this.value === '2' ? 'block' : 'none';
+      });
+    });
 
-      participantSelect.addEventListener('change', function () {
-        const count = this.value;
-        if (count === '1') {
-          student1Section.style.display = 'block';
-          student2Section.style.display = 'none';
-        } else if (count === '2') {
-          student1Section.style.display = 'block';
-          student2Section.style.display = 'block';
-        } else {
-          student1Section.style.display = 'none';
-          student2Section.style.display = 'none';
-        }
+    // Event selection logic
+    const cards = document.querySelectorAll('.event-card');
+    const selectedEvent = document.getElementById('selectedEvent');
+
+    cards.forEach(card => {
+      const input = card.querySelector('.counter input');
+      const plus = card.querySelector('.plus');
+      const minus = card.querySelector('.minus');
+
+      card.addEventListener('click', () => {
+        cards.forEach(c => c.classList.remove('active'));
+        card.classList.add('active');
+        selectedEvent.value = card.dataset.event;
+      });
+
+      plus.addEventListener('click', (e) => {
+        e.stopPropagation();
+        input.value = parseInt(input.value) + 1;
+        card.classList.add('active');
+        selectedEvent.value = card.dataset.event;
+      });
+
+      minus.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (parseInt(input.value) > 0) input.value = parseInt(input.value) - 1;
       });
     });
   </script>
-
-  <script src="assets/js/main.js"></script>
 </body>
-
 </html>
