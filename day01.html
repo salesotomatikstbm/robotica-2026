@@ -18,36 +18,28 @@
   <link rel="stylesheet" href="assets/css/style.css">
 
   <style>
+    body {
+      font-family: 'Inria Sans', sans-serif;
+    }
+
     .required:after {
       content: " *";
       color: red;
     }
 
-    .optional {
-      color: #777;
-      font-size: 14px;
-      font-style: italic;
+    h5 {
+      margin-top: 30px;
     }
   </style>
 </head>
 
 <body>
-  <div class="preloader">
-    <button class="vs-btn preloaderCls">Cancel Preloader</button>
-    <div class="preloader-inner">
-      <img src="assets/img/logo.svg" alt="logo">
-      <span class="loader"></span>
-    </div>
-  </div>
-
   <div class="container py-5">
     <div class="col-lg-12">
       <form class="form-style1 ajax-contact mt-3" action="mail.php" method="post" enctype="multipart/form-data">
-        <img src="assets/img/shapes/f-1-1.png" alt="form shape" class="shape-1">
-        <img src="assets/img/shapes/f-1-2.png" alt="form shape" class="shape-2">
-       <h3 class="title">Robotica 2026</h3>
-        <span class="subtitle">Sample Form Field</span>
-        <h1 class="hero-title">Day 01 Competition</h1>
+        <h3 class="title text-white">Robotica 2026</h3>
+        <span class="subtitle text-white">Registration Form</span>
+        <h1 class="hero-title text-white">Day 01 Competition</h1>
 
         <div class="row gx-20">
 
@@ -62,107 +54,208 @@
             </select>
           </div>
 
-        
+          <!-- Participant Selection -->
+          <div class="col-md-12 form-group">
+            <select class="form-control" id="participantCount" name="participantCount" required>
+              <option value="">Select Number of Participants *</option>
+              <option value="1">1 Participant</option>
+              <option value="2">2 Participants</option>
+            </select>
+          </div>
 
           <!-- ===== STUDENT 1 ===== -->
-          <h5 class="mt-4 mb-2 text-white">Student 1 (Required)</h5>
+          <div id="student1Section">
+            <h5 class="text-white">Student 1 Details</h5>
 
-          <div class="col-md-12 form-group">
-            <input class="form-control" type="text" name="student1_name" placeholder="Student 1 Name *" required>
-          </div>
+            <div class="col-md-12 form-group">
+              <input class="form-control" type="text" name="student1_name" placeholder="Student 1 Name *" required>
+            </div>
 
+            <div class="col-md-12 form-group">
+              <input class="form-control" type="number" name="student1_age" placeholder="Age *" required>
+            </div>
 
-          <div class="col-md-12 form-group">
-            <select class="form-control" name="student1_grade" required>
-              <option value="">Select Grade *</option>
+            <div class="col-md-12 form-group">
+              <select class="form-control" name="student1_gender" required>
+                <option value="">Select Gender *</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+              </select>
+            </div>
+
+            <div class="col-md-12 form-group">
+              <input class="form-control" type="tel" name="student1_contact" placeholder="Contact Number *" required>
+            </div>
+
+            <div class="col-md-12 form-group">
+              <input class="form-control" type="email" name="student1_email" placeholder="Email *" required>
+            </div>
+
+            <div class="col-md-12 form-group">
+              <select class="form-control grade" name="student1_grade" id="student1_grade" required>
+                <option value="">Select Grade *</option>
                 <option value="3">3rd Grade</option>
-              <option value="4">4th Grade</option>
-              <option value="5">5th Grade</option>
-              <option value="6">6th Grade</option>
-              <option value="7">7th Grade</option>
-              <option value="8">8th Grade</option>
-              <option value="9">9th Grade</option>
-              <option value="10">10th Grade</option>
-              <option value="11">11th Grade</option>
-              <option value="12">12th Grade</option>
-            </select>
-          </div>
+                <option value="4">4th Grade</option>
+                <option value="5">5th Grade</option>
+                <option value="6">6th Grade</option>
+                <option value="7">7th Grade</option>
+                <option value="8">8th Grade</option>
+                <option value="9">9th Grade</option>
+                <option value="10">10th Grade</option>
+                <option value="11">11th Grade</option>
+                <option value="12">12th Grade</option>
+              </select>
+            </div>
 
-          <div class="col-md-12 form-group">
-            <input class="form-control" type="text" name="student1_school" placeholder="School Name *" required>
-          </div>
+            <div class="col-md-12 form-group">
+              <input class="form-control category" type="text" name="student1_category" id="student1_category"
+                placeholder="Category (Auto Selected)" readonly>
+            </div>
 
-          <div class="col-md-12 form-group">
-            <input class="form-control" type="tel" name="student1_contact" placeholder="Contact Number *" required>
-          </div>
+            <div class="col-md-12 form-group">
+              <input class="form-control" type="text" name="student1_address" placeholder="Address *" required>
+            </div>
 
-          <div class="col-md-12 form-group">
-            <select class="form-control" name="student1_gender" required>
-              <option value="">Select Gender *</option>
-              <option value="Male">Male</option>
-              <option value="Female">Female</option>
-            </select>
-          </div>
+            <div class="col-md-12 form-group">
+              <input class="form-control" type="text" name="student1_district" placeholder="District *" required>
+            </div>
 
-        
+            <div class="col-md-12 form-group">
+              <input class="form-control" type="text" name="student1_pincode" placeholder="Pin Code *" required>
+            </div>
+
+            <div class="col-md-12 form-group">
+              <input class="form-control" type="text" name="student1_school" placeholder="School Name *" required>
+            </div>
+
+            <div class="col-md-12 form-group">
+              <select class="form-control" name="student1_robotics" required>
+                <option value="">Does your school have Robotics? *</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+              </select>
+            </div>
+
+            <div class="col-md-12 form-group">
+              <input class="form-control" type="text" name="student1_mentor" placeholder="Mentor Name (if applicable)">
+            </div>
+
+            <div class="col-md-12 form-group">
+              <input class="form-control" type="tel" name="student1_mentor_contact" placeholder="Mentor Contact">
+            </div>
+
+            <div class="col-md-12 form-group">
+              <select class="form-control" name="student1_hostel" required>
+                <option value="">Hostel Required (Nominal Cost Applicable) *</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+              </select>
+            </div>
+          </div>
 
           <!-- ===== STUDENT 2 ===== -->
-          <h5 class="mt-4 mb-2 text-white">Student 2 (Optional)</h5>
-          <p class="optional text-white">* Fill this only if the second member is participating.</p>
+          <div id="student2Section">
+            <h5 class="text-white">Student 2 Details</h5>
 
-          <div class="col-md-12 form-group">
-            <input class="form-control" type="text" name="student2_name" placeholder="Student 2 Name">
+            <div class="col-md-12 form-group">
+              <input class="form-control" type="text" name="student2_name" placeholder="Student 2 Name *" required>
+            </div>
+
+            <div class="col-md-12 form-group">
+              <input class="form-control" type="number" name="student2_age" placeholder="Age *" required>
+            </div>
+
+            <div class="col-md-12 form-group">
+              <select class="form-control" name="student2_gender" required>
+                <option value="">Select Gender *</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+              </select>
+            </div>
+
+            <div class="col-md-12 form-group">
+              <input class="form-control" type="tel" name="student2_contact" placeholder="Contact Number *" required>
+            </div>
+
+            <div class="col-md-12 form-group">
+              <input class="form-control" type="email" name="student2_email" placeholder="Email *" required>
+            </div>
+
+            <div class="col-md-12 form-group">
+              <select class="form-control grade" name="student2_grade" id="student2_grade" required>
+                <option value="">Select Grade *</option>
+                <option value="3">3rd Grade</option>
+                <option value="4">4th Grade</option>
+                <option value="5">5th Grade</option>
+                <option value="6">6th Grade</option>
+                <option value="7">7th Grade</option>
+                <option value="8">8th Grade</option>
+                <option value="9">9th Grade</option>
+                <option value="10">10th Grade</option>
+                <option value="11">11th Grade</option>
+                <option value="12">12th Grade</option>
+              </select>
+            </div>
+
+            <div class="col-md-12 form-group">
+              <input class="form-control category" type="text" name="student2_category" id="student2_category"
+                placeholder="Category (Auto Selected)" readonly>
+            </div>
+
+            <div class="col-md-12 form-group">
+              <input class="form-control" type="text" name="student2_address" placeholder="Address *" required>
+            </div>
+
+            <div class="col-md-12 form-group">
+              <input class="form-control" type="text" name="student2_district" placeholder="District *" required>
+            </div>
+
+            <div class="col-md-12 form-group">
+              <input class="form-control" type="text" name="student2_pincode" placeholder="Pin Code *" required>
+            </div>
+
+            <div class="col-md-12 form-group">
+              <input class="form-control" type="text" name="student2_school" placeholder="School Name *" required>
+            </div>
+
+            <div class="col-md-12 form-group">
+              <select class="form-control" name="student2_robotics" required>
+                <option value="">Does your school have Robotics? *</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+              </select>
+            </div>
+
+            <div class="col-md-12 form-group">
+              <input class="form-control" type="text" name="student2_mentor" placeholder="Mentor Name (if applicable)">
+            </div>
+
+            <div class="col-md-12 form-group">
+              <input class="form-control" type="tel" name="student2_mentor_contact" placeholder="Mentor Contact">
+            </div>
+
+            <div class="col-md-12 form-group">
+              <select class="form-control" name="student2_hostel" required>
+                <option value="">Hostel Required (Nominal Cost Applicable) *</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+              </select>
+            </div>
           </div>
 
-         
-
+          <!-- HOW DID YOU HEAR -->
           <div class="col-md-12 form-group">
-            <select class="form-control" name="student2_grade">
-              <option value="">Select Grade</option>
-              <option value="3">3rd Grade</option>
-              <option value="4">4th Grade</option>
-              <option value="5">5th Grade</option>
-              <option value="6">6th Grade</option>
-              <option value="7">7th Grade</option>
-              <option value="8">8th Grade</option>
-              <option value="9">9th Grade</option>
-              <option value="10">10th Grade</option>
-              <option value="11">11th Grade</option>
-              <option value="12">12th Grade</option>
+            <select class="form-control" name="source" id="source">
+              <option value="">How did you hear about this event?</option>
+              <option value="Friends">Friends</option>
+              <option value="Instagram">Instagram</option>
+              <option value="Facebook">Facebook</option>
+              <option value="Poster">Poster</option>
+              <option value="School Notice">School Notice</option>
+              <option value="Website">Website</option>
+              <option value="Other">Other</option>
             </select>
           </div>
-
-          <div class="col-md-12 form-group">
-            <input class="form-control" type="text" name="student2_school" placeholder="School Name">
-          </div>
-
-          <div class="col-md-12 form-group">
-            <input class="form-control" type="tel" name="student2_contact" placeholder="Contact Number">
-          </div>
-
-          <div class="col-md-12 form-group">
-            <select class="form-control" name="student2_gender">
-              <option value="">Select Gender</option>
-              <option value="Male">Male</option>
-              <option value="Female">Female</option>
-            </select>
-          </div>
-
-       
-   <!-- HOW DID YOU HEAR ABOUT THIS EVENT -->
-              <div class="col-md-12 form-group">
-                <select class="form-control" name="source" id="source">
-                  <option value="">How did you hear about this event?</option>
-                  <option value="Friends">Friends</option>
-                  <option value="Instagram">Instagram</option>
-                  <option value="Facebook">Facebook</option>
-                  <option value="Poster">Poster</option>
-                  <option value="School Notice">School Notice</option>
-                  <option value="Website">Website</option>
-                  <option value="Other">Other</option>
-                </select>
-              </div>
-         
 
           <!-- SUBMIT -->
           <div class="col-md-12 form-group mt-3">
@@ -178,6 +271,50 @@
   <!-- JS Files -->
   <script src="assets/js/vendor/jquery-3.6.0.min.js"></script>
   <script src="assets/js/bootstrap.min.js"></script>
+
+  <script>
+    // Auto select category based on grade
+    function getCategory(grade) {
+      if (grade >= 3 && grade <= 5) return "Sub-Junior";
+      if (grade >= 6 && grade <= 8) return "Junior";
+      if (grade >= 9 && grade <= 12) return "Senior";
+      return "";
+    }
+
+    document.querySelectorAll('.grade').forEach(select => {
+      select.addEventListener('change', function () {
+        const grade = parseInt(this.value);
+        const categoryField = document.querySelector(`#${this.id.replace('grade', 'category')}`);
+        if (categoryField) categoryField.value = getCategory(grade);
+      });
+    });
+
+    // Show/hide student sections based on participant count
+    document.addEventListener('DOMContentLoaded', function () {
+      const participantSelect = document.getElementById('participantCount');
+      const student1Section = document.getElementById('student1Section');
+      const student2Section = document.getElementById('student2Section');
+
+      student1Section.style.display = 'none';
+      student2Section.style.display = 'none';
+
+      participantSelect.addEventListener('change', function () {
+        const count = this.value;
+        if (count === '1') {
+          student1Section.style.display = 'block';
+          student2Section.style.display = 'none';
+        } else if (count === '2') {
+          student1Section.style.display = 'block';
+          student2Section.style.display = 'block';
+        } else {
+          student1Section.style.display = 'none';
+          student2Section.style.display = 'none';
+        }
+      });
+    });
+  </script>
+
   <script src="assets/js/main.js"></script>
 </body>
+
 </html>
