@@ -1,274 +1,683 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Robotica 2026</title>
-
-  <!-- Example CSS (you can merge into your main style.css) -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Real-Time Payment Gateway</title>
   <style>
-    /* Hero Section */
-    .hero-inner {
-      position: relative;
-      text-align: center;
-      color: #fff;
-      padding: 120px 0;
-      overflow: hidden;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
-
-    .hero-inner .overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(0, 0, 0, 0.5);
-      z-index: 1;
-    }
-
-    .hero-bg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-size: cover;
-      background-position: center;
-      z-index: 0;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-    }
-
-    .hero-subtitle {
-      display: block;
-      font-size: 22px;
-      font-weight: 500;
-      margin-bottom: 10px;
-    }
-
-    .hero-title {
-      font-size: 48px;
-      font-weight: 700;
-      margin-bottom: 20px;
-    }
-
-    .hero-text {
-      font-size: 18px;
-      line-height: 1.6;
-      margin-bottom: 30px;
-    }
-
-    .vs-btn {
-      display: inline-block;
-      padding: 12px 30px;
-      margin: 0 10px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-size: 16px;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      color: white;
-      background-color: #007bff;
-    }
-
-    .vs-btn:hover {
-      background-color: #0056b3;
-    }
-
-    .vs-btn.style3 {
-      background-color: #ff6600;
-    }
-
-    .vs-btn.style3:hover {
-      background-color: #e65500;
-    }
-
-    /* Popup Overlay */
-    .popup-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.7);
-      display: none;
+    
+    body {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      display: flex;
       justify-content: center;
       align-items: center;
-      z-index: 9999;
+      padding: 20px;
     }
-
-    .popup-overlay.active {
-      display: flex;
-      animation: fadeIn 0.3s ease;
+    
+    .container {
+      max-width: 500px;
+      width: 100%;
     }
-
-    .popup-content {
-      background: #fff;
-      padding: 30px;
-      border-radius: 12px;
+    
+    .payment-card {
+      background-color: white;
+      border-radius: 20px;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+    }
+    
+    .payment-header {
+      background: linear-gradient(to right, #4285f4, #34a853);
+      color: white;
+      padding: 25px;
       text-align: center;
-      width: 300px;
-      max-width: 90%;
-      position: relative;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
     }
-
-    .popup-content h3 {
-      margin-bottom: 20px;
+    
+    .payment-header h1 {
+      font-size: 24px;
+      margin-bottom: 5px;
+    }
+    
+    .payment-header p {
+      opacity: 0.9;
+    }
+    
+    .payment-body {
+      padding: 30px;
+    }
+    
+    .payment-amount {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    
+    .amount {
+      font-size: 42px;
+      font-weight: bold;
       color: #333;
     }
-
-    .close-btn {
-      position: absolute;
-      top: 8px;
-      right: 12px;
-      font-size: 20px;
-      background: none;
-      border: none;
-      cursor: pointer;
+    
+    .currency {
+      font-size: 18px;
+      color: #666;
     }
-
-    .event-btn {
-      display: block;
-      width: 100%;
-      margin: 10px 0;
-      padding: 12px;
-      background-color: #007bff;
-      color: white;
-      border: none;
+    
+    .payment-methods {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+    
+    .payment-option {
+      display: flex;
+      align-items: center;
+      padding: 15px;
+      border: 2px solid #e0e0e0;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .payment-option:hover {
+      border-color: #4285f4;
+      background-color: #f8f9ff;
+    }
+    
+    .payment-option.selected {
+      border-color: #4285f4;
+      background-color: #f0f4ff;
+    }
+    
+    .option-icon {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 15px;
       border-radius: 8px;
-      cursor: pointer;
+      font-weight: bold;
+      color: white;
+    }
+    
+    .gpay-icon {
+      background-color: #4285f4;
+    }
+    
+    .upi-icon {
+      background-color: #34a853;
+    }
+    
+    .razorpay-icon {
+      background-color: #3399ff;
+    }
+    
+    .stripe-icon {
+      background-color: #635bff;
+    }
+    
+    .option-text {
+      flex: 1;
+    }
+    
+    .option-title {
+      font-weight: 600;
+      color: #333;
+    }
+    
+    .option-desc {
+      font-size: 13px;
+      color: #666;
+    }
+    
+    .option-radio {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 2px solid #ccc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .option-radio::after {
+      content: '';
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: #4285f4;
+      display: none;
+    }
+    
+    .payment-option.selected .option-radio::after {
+      display: block;
+    }
+    
+    .payment-details {
+      background-color: #f9f9f9;
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 25px;
+      display: none;
+    }
+    
+    .payment-details.active {
+      display: block;
+    }
+    
+    .detail-title {
       font-size: 16px;
-      transition: 0.3s;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: #333;
     }
-
-    .event-btn:hover {
-      background-color: #0056b3;
+    
+    .upi-id {
+      background-color: white;
+      padding: 12px 15px;
+      border-radius: 8px;
+      border: 1px solid #e0e0e0;
+      font-size: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
+    
+    .copy-btn {
+      background-color: #f1f3f4;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 13px;
+      transition: background-color 0.2s;
+    }
+    
+    .copy-btn:hover {
+      background-color: #e0e0e0;
+    }
+    
+    .mobile-input {
+      width: 100%;
+      padding: 12px 15px;
+      border-radius: 8px;
+      border: 1px solid #e0e0e0;
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+    
+    .mobile-input:focus {
+      outline: none;
+      border-color: #4285f4;
+    }
+    
+    .pay-button {
+      width: 100%;
+      padding: 16px;
+      border: none;
+      border-radius: 12px;
+      background: linear-gradient(to right, #4285f4, #34a853);
+      color: white;
+      font-size: 18px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    
+    .pay-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(66, 133, 244, 0.4);
+    }
+    
+    .pay-button:active {
+      transform: translateY(0);
+    }
+    
+    .secure-notice {
+      text-align: center;
+      margin-top: 20px;
+      color: #666;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+    }
+    
+    .upi-apps {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    
+    .upi-app {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+      font-size: 12px;
+    }
+    
+    .gpay-app {
+      background-color: #4285f4;
+    }
+    
+    .phonepe-app {
+      background-color: #673ab7;
+    }
+    
+    .paytm-app {
+      background-color: #00b9f1;
+    }
+    
+    .status-message {
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 20px;
+      text-align: center;
+      display: none;
+    }
+    
+    .success {
+      background-color: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
+    
+    .error {
+      background-color: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+    }
+    
+    .info {
+      background-color: #cce7ff;
+      color: #004085;
+      border: 1px solid #b3d7ff;
+    }
+    
+    .loading {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 3px solid rgba(255,255,255,.3);
+      border-radius: 50%;
+      border-top-color: #fff;
+      animation: spin 1s ease-in-out infinite;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    
+    @media (max-width: 480px) {
+      .payment-body {
+        padding: 20px;
       }
-      to {
-        opacity: 1;
+      
+      .amount {
+        font-size: 36px;
       }
     }
   </style>
 </head>
-
 <body>
-
-  <!-- ✅ Hero Section -->
-  <div>
-    <div class="hero-inner style2">
-      <div class="overlay"></div>
-      <div class="hero-bg" style="background-image: url('assets/img/bg/h-2-1.jpg');"></div>
-      <img src="assets/img/shapes/h-1-1.png" alt="shapes" class="hero-shape1">
-      <div class="container">
-        <div class="row justify-content-between">
-          <div class="col-lg-7 mx-auto">
-            <div class="hero-content style2 text-center">
-              <span class="hero-subtitle">Robotica 2026</span>
-              <h1 class="hero-title">Celebrating Innovation</h1>
-              <p class="hero-text">
-                Robotica’26 ain’t just a competition; it’s a celebration of innovation and creativity in the realm of
-                robotics. Building on the success of our previous competitions, where we welcomed over 5000+
-                participants from 150+ schools across India, this year aims to surpass all expectations.
-              </p>
-              <div class="hero-btns justify-content-center">
-                <a href="#event_details" class="vs-btn">Explore Event</a>
-                <a href="#" class="vs-btn style3 registerBtn">Register Now</a>
-              </div>
+  <div class="container">
+    <div class="payment-card">
+      <div class="payment-header">
+        <h1>Real-Time Payment Gateway</h1>
+        <p>Complete your payment securely</p>
+      </div>
+      
+      <div class="payment-body">
+        <div class="payment-amount">
+          <span class="currency">₹</span>
+          <span class="amount">100</span>
+        </div>
+        
+        <div class="payment-methods">
+          <div class="payment-option selected" data-method="gpay">
+            <div class="option-icon gpay-icon">G</div>
+            <div class="option-text">
+              <div class="option-title">Google Pay</div>
+              <div class="option-desc">Pay securely with your Google account</div>
+            </div>
+            <div class="option-radio"></div>
+          </div>
+          
+          <div class="payment-option" data-method="upi">
+            <div class="option-icon upi-icon">U</div>
+            <div class="option-text">
+              <div class="option-title">UPI Payment</div>
+              <div class="option-desc">Pay using any UPI app</div>
+            </div>
+            <div class="option-radio"></div>
+          </div>
+          
+          <div class="payment-option" data-method="razorpay">
+            <div class="option-icon razorpay-icon">R</div>
+            <div class="option-text">
+              <div class="option-title">Razorpay</div>
+              <div class="option-desc">Credit/Debit Card, Net Banking, UPI</div>
+            </div>
+            <div class="option-radio"></div>
+          </div>
+          
+          <div class="payment-option" data-method="stripe">
+            <div class="option-icon stripe-icon">S</div>
+            <div class="option-text">
+              <div class="option-title">Stripe</div>
+              <div class="option-desc">International cards & payment methods</div>
+            </div>
+            <div class="option-radio"></div>
+          </div>
+        </div>
+        
+        <div id="gpay-details" class="payment-details active">
+          <div class="detail-title">Pay with Google Pay</div>
+          <p style="margin-bottom: 15px; color: #666;">Click the button below to pay securely with Google Pay</p>
+          <button id="gpay-button" class="pay-button">
+            <svg width="20" height="20" viewBox="0 0 24 24">
+              <path fill="white" d="M5.62 10.639h1.68v2.53H5.62v-2.53zm13.35 2.53h-1.68v-2.53h1.68v2.53zm-4.93-2.53h1.68v2.53h-1.68v-2.53zm-2.37 0h1.68v2.53h-1.68v-2.53zM4.5 12.5c0 3.31 2.69 6 6 6h3v-2.25h-3c-2.07 0-3.75-1.68-3.75-3.75 0-2.07 1.68-3.75 3.75-3.75h3V6.5h-3c-3.31 0-6 2.69-6 6zm15 0c0-3.31-2.69-6-6-6h-3v2.25h3c2.07 0 3.75 1.68 3.75 3.75 0 2.07-1.68 3.75-3.75 3.75h-3V18.5h3c3.31 0 6-2.69 6-6z"/>
+            </svg>
+            Pay with Google Pay
+          </button>
+        </div>
+        
+        <div id="upi-details" class="payment-details">
+          <div class="detail-title">Pay with UPI</div>
+          <p style="margin-bottom: 15px; color: #666;">Send payment to the following UPI ID or enter your mobile number</p>
+          
+          <div style="margin-bottom: 20px;">
+            <div class="detail-title">UPI ID</div>
+            <div class="upi-id">
+              <span id="upi-id-text">arungwork63@okicici</span>
+              <button class="copy-btn" id="copy-upi">Copy</button>
             </div>
           </div>
+          
+          <div>
+            <div class="detail-title">Mobile Number</div>
+            <input type="tel" class="mobile-input" id="mobile-input" placeholder="Enter your mobile number" maxlength="10">
+            <button id="upi-pay-button" class="pay-button">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                <path d="M12 19l7-7 3 3-7 7-3-3z"/>
+                <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/>
+                <path d="M2 2l7.586 7.586"/>
+                <path d="M11 11l2 2"/>
+              </svg>
+              Pay via UPI
+            </button>
+          </div>
+          
+          <div class="upi-apps">
+            <div class="upi-app gpay-app">GPay</div>
+            <div class="upi-app phonepe-app">PhonePe</div>
+            <div class="upi-app paytm-app">Paytm</div>
+          </div>
+        </div>
+        
+        <div id="razorpay-details" class="payment-details">
+          <div class="detail-title">Pay with Razorpay</div>
+          <p style="margin-bottom: 15px; color: #666;">Complete payment using cards, net banking, UPI, or wallets</p>
+          <button id="razorpay-button" class="pay-button">
+            <svg width="20" height="20" viewBox="0 0 24 24">
+              <path fill="white" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+            </svg>
+            Pay with Razorpay
+          </button>
+        </div>
+        
+        <div id="stripe-details" class="payment-details">
+          <div class="detail-title">Pay with Stripe</div>
+          <p style="margin-bottom: 15px; color: #666;">International payment processing for cards and digital wallets</p>
+          <button id="stripe-button" class="pay-button">
+            <svg width="20" height="20" viewBox="0 0 24 24">
+              <path fill="white" d="M11.5 2C6.81 2 3 5.81 3 10.5S6.81 19 11.5 19h1v-1.5h-1c-3.04 0-5.5-2.46-5.5-5.5S8.46 6.5 11.5 6.5h1V5h-1C7.46 5 5 7.46 5 10.5S7.46 16 11.5 16h1v-1.5h-1c-2.21 0-4-1.79-4-4s1.79-4 4-4h1V7h-1C8.57 7 7 8.57 7 10.5S8.57 14 11.5 14h1v-1.5h-1c-1.38 0-2.5-1.12-2.5-2.5S10.12 8 11.5 8h1V2h-1z"/>
+            </svg>
+            Pay with Stripe
+          </button>
+        </div>
+        
+        <div id="status-message" class="status-message"></div>
+        
+        <div class="secure-notice">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#34a853">
+            <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/>
+          </svg>
+          Your payment is secure and encrypted
         </div>
       </div>
     </div>
   </div>
 
-  <!-- ✅ Popup Section -->
-  <div id="popupOverlay" class="popup-overlay">
-    <div class="popup-content">
-      <button id="closeBtn" class="close-btn">&times;</button>
-      <h3>Select Event</h3>
-      <button id="roboRaceBtn" class="event-btn">Robo Race</button>
-      <button id="roboSumoBtn" class="event-btn">Robo Sumo</button>
-      <button id="workingModelBtn" class="event-btn">Working Model</button>
-    </div>
-  </div>
-
-  <!-- ✅ JavaScript -->
+  <!-- Load required libraries -->
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <script src="https://js.stripe.com/v3/"></script>
+  
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      // Get all register links
-      const registerLinks = document.querySelectorAll('.registerBtn');
-      const popupOverlay = document.getElementById('popupOverlay');
-      const closeBtn = document.getElementById('closeBtn');
-
-      // Event buttons
-      const roboRaceBtn = document.getElementById('roboRaceBtn');
-      const roboSumoBtn = document.getElementById('roboSumoBtn');
-      const workingModelBtn = document.getElementById('workingModelBtn');
-
-      // Payment Links
-      const paymentLinks = {
-        roboRace: 'https://www.robotica.org.in/',
-        roboSumo: 'https://www.robotica.org.in/',
-        workingModel: 'https://www.robotica.org.in/'
-      };
-
-      // Open popup
-      registerLinks.forEach(link => {
-        link.addEventListener('click', function (e) {
-          e.preventDefault();
-          popupOverlay.classList.add('active');
-          document.body.style.overflow = 'hidden';
+    document.addEventListener('DOMContentLoaded', function() {
+      const paymentOptions = document.querySelectorAll('.payment-option');
+      const gpayDetails = document.getElementById('gpay-details');
+      const upiDetails = document.getElementById('upi-details');
+      const razorpayDetails = document.getElementById('razorpay-details');
+      const stripeDetails = document.getElementById('stripe-details');
+      const gpayButton = document.getElementById('gpay-button');
+      const upiPayButton = document.getElementById('upi-pay-button');
+      const razorpayButton = document.getElementById('razorpay-button');
+      const stripeButton = document.getElementById('stripe-button');
+      const mobileInput = document.getElementById('mobile-input');
+      const copyUpiBtn = document.getElementById('copy-upi');
+      const upiIdText = document.getElementById('upi-id-text');
+      const statusMessage = document.getElementById('status-message');
+      
+      // Initialize Stripe
+      const stripe = Stripe('pk_test_your_stripe_publishable_key_here'); // Replace with your Stripe publishable key
+      
+      // Payment method selection
+      paymentOptions.forEach(option => {
+        option.addEventListener('click', function() {
+          const method = this.getAttribute('data-method');
+          
+          // Update selected option
+          paymentOptions.forEach(opt => opt.classList.remove('selected'));
+          this.classList.add('selected');
+          
+          // Show corresponding details
+          gpayDetails.classList.toggle('active', method === 'gpay');
+          upiDetails.classList.toggle('active', method === 'upi');
+          razorpayDetails.classList.toggle('active', method === 'razorpay');
+          stripeDetails.classList.toggle('active', method === 'stripe');
         });
       });
-
-      // Close popup
-      closeBtn.addEventListener('click', function () {
-        popupOverlay.classList.remove('active');
-        document.body.style.overflow = 'auto';
+      
+      // Copy UPI ID
+      copyUpiBtn.addEventListener('click', function() {
+        navigator.clipboard.writeText(upiIdText.textContent)
+          .then(() => {
+            copyUpiBtn.textContent = 'Copied!';
+            setTimeout(() => {
+              copyUpiBtn.textContent = 'Copy';
+            }, 2000);
+          })
+          .catch(err => {
+            console.error('Failed to copy UPI ID: ', err);
+          });
       });
-
-      // Click outside to close
-      popupOverlay.addEventListener('click', function (e) {
-        if (e.target === popupOverlay) {
-          popupOverlay.classList.remove('active');
-          document.body.style.overflow = 'auto';
+      
+      // Google Pay button click
+      gpayButton.addEventListener('click', function() {
+        processGooglePay();
+      });
+      
+      // UPI Pay button click
+      upiPayButton.addEventListener('click', function() {
+        const mobileNumber = mobileInput.value.trim();
+        
+        if (mobileNumber === '') {
+          showStatus('Please enter your mobile number', 'error');
+          return;
         }
-      });
-
-      // Escape key
-      document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape' && popupOverlay.classList.contains('active')) {
-          popupOverlay.classList.remove('active');
-          document.body.style.overflow = 'auto';
+        
+        if (!/^\d{10}$/.test(mobileNumber)) {
+          showStatus('Please enter a valid 10-digit mobile number', 'error');
+          return;
         }
+        
+        processUPIPayment(mobileNumber);
       });
-
-      // Event button click
-      roboRaceBtn.addEventListener('click', function () {
-        window.open(paymentLinks.roboRace, '_blank');
-        popupOverlay.classList.remove('active');
-        document.body.style.overflow = 'auto';
+      
+      // Razorpay button click
+      razorpayButton.addEventListener('click', function() {
+        processRazorpayPayment();
       });
-
-      roboSumoBtn.addEventListener('click', function () {
-        window.open(paymentLinks.roboSumo, '_blank');
-        popupOverlay.classList.remove('active');
-        document.body.style.overflow = 'auto';
+      
+      // Stripe button click
+      stripeButton.addEventListener('click', function() {
+        processStripePayment();
       });
-
-      workingModelBtn.addEventListener('click', function () {
-        window.open(paymentLinks.workingModel, '_blank');
-        popupOverlay.classList.remove('active');
-        document.body.style.overflow = 'auto';
+      
+      // Google Pay integration
+      function processGooglePay() {
+        showStatus('Initializing Google Pay...', 'info');
+        
+        // In a real implementation, you would use the Google Pay API
+        // This is a simplified version for demonstration
+        
+        const upiLink = `upi://pay?pa=${encodeURIComponent('arungwork63@okicici')}&pn=${encodeURIComponent('Arun Govindhasamy')}&am=100&cu=INR&tn=Event Registration`;
+        
+        // Try to open Google Pay app
+        window.location.href = upiLink;
+        
+        // Show instruction if app doesn't open
+        setTimeout(() => {
+          showStatus('If Google Pay did not open, please copy the UPI ID and pay manually, or try another payment method.', 'info');
+        }, 3000);
+      }
+      
+      // UPI Payment processing
+      function processUPIPayment(mobileNumber) {
+        showStatus('Processing UPI payment...', 'info');
+        
+        // In a real implementation, you would call your backend API
+        // to initiate a UPI payment request
+        
+        // Simulate API call
+        setTimeout(() => {
+          // This would be replaced with actual API call
+          const upiLink = `upi://pay?pa=${encodeURIComponent('arungwork63@okicici')}&pn=${encodeURIComponent('Arun Govindhasamy')}&am=100&cu=INR&tn=Event Registration&mam=${mobileNumber}`;
+          
+          // Try to open UPI app
+          window.location.href = upiLink;
+          
+          showStatus('Opening UPI app... Please complete the payment in your UPI app.', 'info');
+        }, 1000);
+      }
+      
+      // Razorpay integration
+      function processRazorpayPayment() {
+        showStatus('Initializing Razorpay...', 'info');
+        
+        // In a real implementation, you would first call your backend
+        // to create an order and get the order ID
+        
+        const options = {
+          key: 'rzp_test_your_razorpay_key_here', // Replace with your Razorpay key
+          amount: 10000, // Amount in paise (10000 paise = ₹100)
+          currency: 'INR',
+          name: 'Event Registration',
+          description: 'Payment for Event Registration',
+          image: 'https://example.com/your_logo.jpg', // Your logo
+          handler: function(response) {
+            // This function runs after successful payment
+            showStatus('Payment successful! Payment ID: ' + response.razorpay_payment_id, 'success');
+            
+            // In a real implementation, you would verify the payment
+            // by sending the payment ID to your backend
+          },
+          prefill: {
+            name: 'Customer Name',
+            email: 'customer@example.com',
+            contact: '9999999999'
+          },
+          notes: {
+            address: 'Event Registration Payment'
+          },
+          theme: {
+            color: '#4285f4'
+          }
+        };
+        
+        const rzp = new Razorpay(options);
+        rzp.open();
+        
+        rzp.on('payment.failed', function(response) {
+          showStatus('Payment failed. Please try again. Error: ' + response.error.description, 'error');
+        });
+      }
+      
+      // Stripe integration
+      async function processStripePayment() {
+        showStatus('Initializing Stripe...', 'info');
+        
+        try {
+          // In a real implementation, you would first call your backend
+          // to create a payment intent and get the client secret
+          
+          // This is a simplified example
+          const { error } = await stripe.redirectToCheckout({
+            lineItems: [{
+              price: 'price_your_stripe_price_id', // Replace with your Stripe price ID
+              quantity: 1,
+            }],
+            mode: 'payment',
+            successUrl: window.location.origin + '/success.html',
+            cancelUrl: window.location.origin + '/cancel.html',
+          });
+          
+          if (error) {
+            showStatus('Error initializing payment: ' + error.message, 'error');
+          }
+        } catch (error) {
+          showStatus('Payment initialization failed: ' + error.message, 'error');
+        }
+      }
+      
+      // Show status message
+      function showStatus(message, type) {
+        statusMessage.textContent = message;
+        statusMessage.className = 'status-message';
+        statusMessage.classList.add(type);
+        statusMessage.style.display = 'block';
+        
+        // Auto-hide success messages after 5 seconds
+        if (type === 'success') {
+          setTimeout(() => {
+            statusMessage.style.display = 'none';
+          }, 5000);
+        }
+      }
+      
+      // Format mobile number input
+      mobileInput.addEventListener('input', function() {
+        this.value = this.value.replace(/\D/g, '').slice(0, 10);
       });
     });
   </script>
