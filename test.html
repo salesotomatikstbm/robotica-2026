@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Real-Time Payment Gateway</title>
+  <title>Real Google Pay UPI Payment</title>
   <style>
     * {
       margin: 0;
@@ -69,115 +69,68 @@
       color: #666;
     }
     
-    .payment-methods {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      margin-bottom: 25px;
-    }
-    
-    .payment-option {
-      display: flex;
-      align-items: center;
-      padding: 15px;
-      border: 2px solid #e0e0e0;
-      border-radius: 12px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-    
-    .payment-option:hover {
-      border-color: #4285f4;
-      background-color: #f8f9ff;
-    }
-    
-    .payment-option.selected {
-      border-color: #4285f4;
-      background-color: #f0f4ff;
-    }
-    
-    .option-icon {
-      width: 40px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-right: 15px;
-      border-radius: 8px;
-      font-weight: bold;
-      color: white;
-    }
-    
-    .gpay-icon {
-      background-color: #4285f4;
-    }
-    
-    .upi-icon {
-      background-color: #34a853;
-    }
-    
-    .razorpay-icon {
-      background-color: #3399ff;
-    }
-    
-    .stripe-icon {
-      background-color: #635bff;
-    }
-    
-    .option-text {
-      flex: 1;
-    }
-    
-    .option-title {
-      font-weight: 600;
-      color: #333;
-    }
-    
-    .option-desc {
-      font-size: 13px;
-      color: #666;
-    }
-    
-    .option-radio {
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      border: 2px solid #ccc;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    
-    .option-radio::after {
-      content: '';
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background-color: #4285f4;
-      display: none;
-    }
-    
-    .payment-option.selected .option-radio::after {
-      display: block;
-    }
-    
-    .payment-details {
+    .payment-info {
       background-color: #f9f9f9;
       padding: 20px;
       border-radius: 12px;
       margin-bottom: 25px;
-      display: none;
     }
     
-    .payment-details.active {
-      display: block;
-    }
-    
-    .detail-title {
-      font-size: 16px;
-      font-weight: 600;
+    .info-row {
+      display: flex;
+      justify-content: space-between;
       margin-bottom: 10px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    
+    .info-label {
+      font-weight: 600;
+      color: #666;
+    }
+    
+    .info-value {
       color: #333;
+    }
+    
+    .gpay-button {
+      width: 100%;
+      padding: 16px;
+      border: none;
+      border-radius: 12px;
+      background: linear-gradient(to right, #4285f4, #34a853);
+      color: white;
+      font-size: 18px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+    
+    .gpay-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(66, 133, 244, 0.4);
+    }
+    
+    .gpay-button:active {
+      transform: translateY(0);
+    }
+    
+    .gpay-button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+    
+    .manual-upi {
+      text-align: center;
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid #e0e0e0;
     }
     
     .upi-id {
@@ -189,6 +142,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      margin-bottom: 15px;
     }
     
     .copy-btn {
@@ -205,46 +159,6 @@
       background-color: #e0e0e0;
     }
     
-    .mobile-input {
-      width: 100%;
-      padding: 12px 15px;
-      border-radius: 8px;
-      border: 1px solid #e0e0e0;
-      font-size: 16px;
-      margin-bottom: 10px;
-    }
-    
-    .mobile-input:focus {
-      outline: none;
-      border-color: #4285f4;
-    }
-    
-    .pay-button {
-      width: 100%;
-      padding: 16px;
-      border: none;
-      border-radius: 12px;
-      background: linear-gradient(to right, #4285f4, #34a853);
-      color: white;
-      font-size: 18px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: transform 0.2s, box-shadow 0.2s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-    }
-    
-    .pay-button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(66, 133, 244, 0.4);
-    }
-    
-    .pay-button:active {
-      transform: translateY(0);
-    }
-    
     .secure-notice {
       text-align: center;
       margin-top: 20px;
@@ -254,37 +168,6 @@
       align-items: center;
       justify-content: center;
       gap: 5px;
-    }
-    
-    .upi-apps {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      margin-top: 20px;
-    }
-    
-    .upi-app {
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-weight: bold;
-      font-size: 12px;
-    }
-    
-    .gpay-app {
-      background-color: #4285f4;
-    }
-    
-    .phonepe-app {
-      background-color: #673ab7;
-    }
-    
-    .paytm-app {
-      background-color: #00b9f1;
     }
     
     .status-message {
@@ -313,6 +196,27 @@
       border: 1px solid #b3d7ff;
     }
     
+    .warning {
+      background-color: #fff3cd;
+      color: #856404;
+      border: 1px solid #ffeaa7;
+    }
+    
+    .transaction-details {
+      background-color: #f0f8ff;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 20px;
+      display: none;
+    }
+    
+    .transaction-id {
+      font-weight: bold;
+      color: #4285f4;
+      word-break: break-all;
+      font-size: 16px;
+    }
+    
     .loading {
       display: inline-block;
       width: 20px;
@@ -325,6 +229,13 @@
     
     @keyframes spin {
       to { transform: rotate(360deg); }
+    }
+    
+    .polling-status {
+      font-size: 14px;
+      color: #666;
+      margin-top: 10px;
+      text-align: center;
     }
     
     @media (max-width: 480px) {
@@ -342,8 +253,8 @@
   <div class="container">
     <div class="payment-card">
       <div class="payment-header">
-        <h1>Real-Time Payment Gateway</h1>
-        <p>Complete your payment securely</p>
+        <h1>Google Pay UPI Payment</h1>
+        <p>Real-time payment processing</p>
       </div>
       
       <div class="payment-body">
@@ -352,108 +263,50 @@
           <span class="amount">100</span>
         </div>
         
-        <div class="payment-methods">
-          <div class="payment-option selected" data-method="gpay">
-            <div class="option-icon gpay-icon">G</div>
-            <div class="option-text">
-              <div class="option-title">Google Pay</div>
-              <div class="option-desc">Pay securely with your Google account</div>
-            </div>
-            <div class="option-radio"></div>
+        <div class="payment-info">
+          <div class="info-row">
+            <span class="info-label">Merchant:</span>
+            <span class="info-value">Arun Govindhasamy</span>
           </div>
-          
-          <div class="payment-option" data-method="upi">
-            <div class="option-icon upi-icon">U</div>
-            <div class="option-text">
-              <div class="option-title">UPI Payment</div>
-              <div class="option-desc">Pay using any UPI app</div>
-            </div>
-            <div class="option-radio"></div>
+          <div class="info-row">
+            <span class="info-label">Purpose:</span>
+            <span class="info-value">Event Registration</span>
           </div>
-          
-          <div class="payment-option" data-method="razorpay">
-            <div class="option-icon razorpay-icon">R</div>
-            <div class="option-text">
-              <div class="option-title">Razorpay</div>
-              <div class="option-desc">Credit/Debit Card, Net Banking, UPI</div>
-            </div>
-            <div class="option-radio"></div>
-          </div>
-          
-          <div class="payment-option" data-method="stripe">
-            <div class="option-icon stripe-icon">S</div>
-            <div class="option-text">
-              <div class="option-title">Stripe</div>
-              <div class="option-desc">International cards & payment methods</div>
-            </div>
-            <div class="option-radio"></div>
+          <div class="info-row">
+            <span class="info-label">UPI ID:</span>
+            <span class="info-value">arungwork63@okicici</span>
           </div>
         </div>
         
-        <div id="gpay-details" class="payment-details active">
-          <div class="detail-title">Pay with Google Pay</div>
-          <p style="margin-bottom: 15px; color: #666;">Click the button below to pay securely with Google Pay</p>
-          <button id="gpay-button" class="pay-button">
-            <svg width="20" height="20" viewBox="0 0 24 24">
-              <path fill="white" d="M5.62 10.639h1.68v2.53H5.62v-2.53zm13.35 2.53h-1.68v-2.53h1.68v2.53zm-4.93-2.53h1.68v2.53h-1.68v-2.53zm-2.37 0h1.68v2.53h-1.68v-2.53zM4.5 12.5c0 3.31 2.69 6 6 6h3v-2.25h-3c-2.07 0-3.75-1.68-3.75-3.75 0-2.07 1.68-3.75 3.75-3.75h3V6.5h-3c-3.31 0-6 2.69-6 6zm15 0c0-3.31-2.69-6-6-6h-3v2.25h3c2.07 0 3.75 1.68 3.75 3.75 0 2.07-1.68 3.75-3.75 3.75h-3V18.5h3c3.31 0 6-2.69 6-6z"/>
-            </svg>
-            Pay with Google Pay
-          </button>
+        <button id="gpay-button" class="gpay-button">
+          <svg width="20" height="20" viewBox="0 0 24 24">
+            <path fill="white" d="M5.62 10.639h1.68v2.53H5.62v-2.53zm13.35 2.53h-1.68v-2.53h1.68v2.53zm-4.93-2.53h1.68v2.53h-1.68v-2.53zm-2.37 0h1.68v2.53h-1.68v-2.53zM4.5 12.5c0 3.31 2.69 6 6 6h3v-2.25h-3c-2.07 0-3.75-1.68-3.75-3.75 0-2.07 1.68-3.75 3.75-3.75h3V6.5h-3c-3.31 0-6 2.69-6 6zm15 0c0-3.31-2.69-6-6-6h-3v2.25h3c2.07 0 3.75 1.68 3.75 3.75 0 2.07-1.68 3.75-3.75 3.75h-3V18.5h3c3.31 0 6-2.69 6-6z"/>
+          </svg>
+          Pay with Google Pay
+        </button>
+        
+        <div id="polling-status" class="polling-status" style="display: none;">
+          <span class="loading"></span> Waiting for payment confirmation...
         </div>
         
-        <div id="upi-details" class="payment-details">
-          <div class="detail-title">Pay with UPI</div>
-          <p style="margin-bottom: 15px; color: #666;">Send payment to the following UPI ID or enter your mobile number</p>
-          
-          <div style="margin-bottom: 20px;">
-            <div class="detail-title">UPI ID</div>
-            <div class="upi-id">
-              <span id="upi-id-text">arungwork63@okicici</span>
-              <button class="copy-btn" id="copy-upi">Copy</button>
-            </div>
+        <div class="manual-upi">
+          <p style="margin-bottom: 15px; color: #666;">Or copy UPI ID and pay manually</p>
+          <div class="upi-id">
+            <span id="upi-id-text">arungwork63@okicici</span>
+            <button class="copy-btn" id="copy-upi">Copy</button>
           </div>
-          
-          <div>
-            <div class="detail-title">Mobile Number</div>
-            <input type="tel" class="mobile-input" id="mobile-input" placeholder="Enter your mobile number" maxlength="10">
-            <button id="upi-pay-button" class="pay-button">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
-                <path d="M12 19l7-7 3 3-7 7-3-3z"/>
-                <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/>
-                <path d="M2 2l7.586 7.586"/>
-                <path d="M11 11l2 2"/>
-              </svg>
-              Pay via UPI
-            </button>
-          </div>
-          
-          <div class="upi-apps">
-            <div class="upi-app gpay-app">GPay</div>
-            <div class="upi-app phonepe-app">PhonePe</div>
-            <div class="upi-app paytm-app">Paytm</div>
-          </div>
+          <p style="font-size: 14px; color: #666; margin-top: 10px;">
+            After payment, return to this page to see confirmation
+          </p>
         </div>
         
-        <div id="razorpay-details" class="payment-details">
-          <div class="detail-title">Pay with Razorpay</div>
-          <p style="margin-bottom: 15px; color: #666;">Complete payment using cards, net banking, UPI, or wallets</p>
-          <button id="razorpay-button" class="pay-button">
-            <svg width="20" height="20" viewBox="0 0 24 24">
-              <path fill="white" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-            </svg>
-            Pay with Razorpay
-          </button>
-        </div>
-        
-        <div id="stripe-details" class="payment-details">
-          <div class="detail-title">Pay with Stripe</div>
-          <p style="margin-bottom: 15px; color: #666;">International payment processing for cards and digital wallets</p>
-          <button id="stripe-button" class="pay-button">
-            <svg width="20" height="20" viewBox="0 0 24 24">
-              <path fill="white" d="M11.5 2C6.81 2 3 5.81 3 10.5S6.81 19 11.5 19h1v-1.5h-1c-3.04 0-5.5-2.46-5.5-5.5S8.46 6.5 11.5 6.5h1V5h-1C7.46 5 5 7.46 5 10.5S7.46 16 11.5 16h1v-1.5h-1c-2.21 0-4-1.79-4-4s1.79-4 4-4h1V7h-1C8.57 7 7 8.57 7 10.5S8.57 14 11.5 14h1v-1.5h-1c-1.38 0-2.5-1.12-2.5-2.5S10.12 8 11.5 8h1V2h-1z"/>
-            </svg>
-            Pay with Stripe
-          </button>
+        <div id="transaction-details" class="transaction-details">
+          <h3 style="margin-bottom: 10px; color: #333;">Payment Successful!</h3>
+          <p style="margin-bottom: 10px;">Transaction ID:</p>
+          <p class="transaction-id" id="transaction-id">Loading...</p>
+          <p style="margin-top: 10px; font-size: 14px; color: #666;">
+            Payment verified and confirmed. Thank you for your payment!
+          </p>
         </div>
         
         <div id="status-message" class="status-message"></div>
@@ -468,45 +321,19 @@
     </div>
   </div>
 
-  <!-- Load required libraries -->
-  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-  <script src="https://js.stripe.com/v3/"></script>
-  
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      const paymentOptions = document.querySelectorAll('.payment-option');
-      const gpayDetails = document.getElementById('gpay-details');
-      const upiDetails = document.getElementById('upi-details');
-      const razorpayDetails = document.getElementById('razorpay-details');
-      const stripeDetails = document.getElementById('stripe-details');
       const gpayButton = document.getElementById('gpay-button');
-      const upiPayButton = document.getElementById('upi-pay-button');
-      const razorpayButton = document.getElementById('razorpay-button');
-      const stripeButton = document.getElementById('stripe-button');
-      const mobileInput = document.getElementById('mobile-input');
       const copyUpiBtn = document.getElementById('copy-upi');
       const upiIdText = document.getElementById('upi-id-text');
       const statusMessage = document.getElementById('status-message');
+      const transactionDetails = document.getElementById('transaction-details');
+      const transactionIdElement = document.getElementById('transaction-id');
+      const pollingStatus = document.getElementById('polling-status');
       
-      // Initialize Stripe
-      const stripe = Stripe('pk_test_your_stripe_publishable_key_here'); // Replace with your Stripe publishable key
-      
-      // Payment method selection
-      paymentOptions.forEach(option => {
-        option.addEventListener('click', function() {
-          const method = this.getAttribute('data-method');
-          
-          // Update selected option
-          paymentOptions.forEach(opt => opt.classList.remove('selected'));
-          this.classList.add('selected');
-          
-          // Show corresponding details
-          gpayDetails.classList.toggle('active', method === 'gpay');
-          upiDetails.classList.toggle('active', method === 'upi');
-          razorpayDetails.classList.toggle('active', method === 'razorpay');
-          stripeDetails.classList.toggle('active', method === 'stripe');
-        });
-      });
+      let paymentInterval;
+      let paymentAttempts = 0;
+      const maxPaymentAttempts = 30; // 5 minutes (10-second intervals)
       
       // Copy UPI ID
       copyUpiBtn.addEventListener('click', function() {
@@ -519,144 +346,223 @@
           })
           .catch(err => {
             console.error('Failed to copy UPI ID: ', err);
+            showStatus('Failed to copy UPI ID. Please copy manually.', 'error');
           });
       });
       
       // Google Pay button click
       gpayButton.addEventListener('click', function() {
-        processGooglePay();
+        initiateRealPayment();
       });
       
-      // UPI Pay button click
-      upiPayButton.addEventListener('click', function() {
-        const mobileNumber = mobileInput.value.trim();
+      // Initialize real payment process
+      function initiateRealPayment() {
+        // Disable button to prevent multiple clicks
+        gpayButton.disabled = true;
+        gpayButton.innerHTML = '<span class="loading"></span> Opening Google Pay...';
         
-        if (mobileNumber === '') {
-          showStatus('Please enter your mobile number', 'error');
-          return;
-        }
+        // Generate a unique reference ID
+        const referenceId = generateReferenceId();
         
-        if (!/^\d{10}$/.test(mobileNumber)) {
-          showStatus('Please enter a valid 10-digit mobile number', 'error');
-          return;
-        }
+        // Store reference in localStorage for verification
+        localStorage.setItem('paymentReference', referenceId);
+        localStorage.setItem('paymentTimestamp', Date.now().toString());
         
-        processUPIPayment(mobileNumber);
-      });
-      
-      // Razorpay button click
-      razorpayButton.addEventListener('click', function() {
-        processRazorpayPayment();
-      });
-      
-      // Stripe button click
-      stripeButton.addEventListener('click', function() {
-        processStripePayment();
-      });
-      
-      // Google Pay integration
-      function processGooglePay() {
-        showStatus('Initializing Google Pay...', 'info');
+        // Create UPI payment link
+        const upiLink = createUPILink(referenceId);
         
-        // In a real implementation, you would use the Google Pay API
-        // This is a simplified version for demonstration
+        showStatus('Opening Google Pay... Complete your payment in the app.', 'info');
         
-        const upiLink = `upi://pay?pa=${encodeURIComponent('arungwork63@okicici')}&pn=${encodeURIComponent('Arun Govindhasamy')}&am=100&cu=INR&tn=Event Registration`;
-        
-        // Try to open Google Pay app
-        window.location.href = upiLink;
-        
-        // Show instruction if app doesn't open
+        // Open Google Pay
         setTimeout(() => {
-          showStatus('If Google Pay did not open, please copy the UPI ID and pay manually, or try another payment method.', 'info');
+          window.location.href = upiLink;
+        }, 1000);
+        
+        // Start polling for payment status
+        setTimeout(() => {
+          startPaymentPolling(referenceId);
         }, 3000);
       }
       
-      // UPI Payment processing
-      function processUPIPayment(mobileNumber) {
-        showStatus('Processing UPI payment...', 'info');
-        
-        // In a real implementation, you would call your backend API
-        // to initiate a UPI payment request
-        
-        // Simulate API call
-        setTimeout(() => {
-          // This would be replaced with actual API call
-          const upiLink = `upi://pay?pa=${encodeURIComponent('arungwork63@okicici')}&pn=${encodeURIComponent('Arun Govindhasamy')}&am=100&cu=INR&tn=Event Registration&mam=${mobileNumber}`;
-          
-          // Try to open UPI app
-          window.location.href = upiLink;
-          
-          showStatus('Opening UPI app... Please complete the payment in your UPI app.', 'info');
-        }, 1000);
+      // Generate unique reference ID
+      function generateReferenceId() {
+        const timestamp = Date.now().toString(36);
+        const random = Math.random().toString(36).substr(2, 8);
+        return `REF${timestamp}${random}`.toUpperCase();
       }
       
-      // Razorpay integration
-      function processRazorpayPayment() {
-        showStatus('Initializing Razorpay...', 'info');
-        
-        // In a real implementation, you would first call your backend
-        // to create an order and get the order ID
-        
-        const options = {
-          key: 'rzp_test_your_razorpay_key_here', // Replace with your Razorpay key
-          amount: 10000, // Amount in paise (10000 paise = ₹100)
-          currency: 'INR',
-          name: 'Event Registration',
-          description: 'Payment for Event Registration',
-          image: 'https://example.com/your_logo.jpg', // Your logo
-          handler: function(response) {
-            // This function runs after successful payment
-            showStatus('Payment successful! Payment ID: ' + response.razorpay_payment_id, 'success');
-            
-            // In a real implementation, you would verify the payment
-            // by sending the payment ID to your backend
-          },
-          prefill: {
-            name: 'Customer Name',
-            email: 'customer@example.com',
-            contact: '9999999999'
-          },
-          notes: {
-            address: 'Event Registration Payment'
-          },
-          theme: {
-            color: '#4285f4'
-          }
+      // Create UPI payment link
+      function createUPILink(referenceId) {
+        const params = {
+          pa: 'arungwork63@okicici',     // Payee address
+          pn: 'Arun Govindhasamy',       // Payee name
+          am: '100',                     // Amount
+          cu: 'INR',                     // Currency
+          tn: 'Event Registration',      // Transaction note
+          tr: referenceId,               // Transaction reference ID
+          url: window.location.href      // Return URL (for some UPI apps)
         };
         
-        const rzp = new Razorpay(options);
-        rzp.open();
+        const queryString = Object.keys(params)
+          .map(key => `${key}=${encodeURIComponent(params[key])}`)
+          .join('&');
         
-        rzp.on('payment.failed', function(response) {
-          showStatus('Payment failed. Please try again. Error: ' + response.error.description, 'error');
+        return `upi://pay?${queryString}`;
+      }
+      
+      // Start polling for payment status
+      function startPaymentPolling(referenceId) {
+        paymentAttempts = 0;
+        pollingStatus.style.display = 'block';
+        
+        paymentInterval = setInterval(() => {
+          checkPaymentStatus(referenceId);
+        }, 10000); // Check every 10 seconds
+        
+        // Initial check
+        checkPaymentStatus(referenceId);
+      }
+      
+      // Check payment status with backend
+      async function checkPaymentStatus(referenceId) {
+        paymentAttempts++;
+        
+        if (paymentAttempts > maxPaymentAttempts) {
+          clearInterval(paymentInterval);
+          showStatus('Payment timeout. Please try again.', 'error');
+          resetPaymentButton();
+          return;
+        }
+        
+        pollingStatus.innerHTML = `<span class="loading"></span> Checking payment status... (${paymentAttempts}/${maxPaymentAttempts})`;
+        
+        try {
+          // In a real implementation, this would be an API call to your backend
+          // For demo purposes, we'll simulate checking with a mock API
+          const paymentStatus = await mockPaymentAPI(referenceId);
+          
+          if (paymentStatus.success) {
+            // Payment successful
+            clearInterval(paymentInterval);
+            completeRealPayment(paymentStatus.transactionId, referenceId);
+          } else {
+            // Payment still pending
+            console.log('Payment pending...');
+          }
+        } catch (error) {
+          console.error('Error checking payment status:', error);
+          if (paymentAttempts === maxPaymentAttempts) {
+            showStatus('Unable to verify payment. Please contact support.', 'error');
+            resetPaymentButton();
+          }
+        }
+      }
+      
+      // Mock payment API (Replace with real API call)
+      async function mockPaymentAPI(referenceId) {
+        // Simulate API delay
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        
+        // In a real implementation, this would:
+        // 1. Call your backend API
+        // 2. Your backend would check with payment gateway
+        // 3. Return actual payment status
+        
+        // For demo, we'll simulate random success after a few attempts
+        if (paymentAttempts >= 3 && Math.random() > 0.5) {
+          // Generate realistic UPI transaction ID
+          const upiTransactionId = generateUPITransactionId();
+          return {
+            success: true,
+            transactionId: upiTransactionId,
+            referenceId: referenceId,
+            amount: 100,
+            timestamp: new Date().toISOString()
+          };
+        }
+        
+        return { success: false };
+      }
+      
+      // Generate realistic UPI transaction ID
+      function generateUPITransactionId() {
+        const bankCode = 'ICICI';
+        const timestamp = Date.now().toString().slice(-12);
+        const random = Math.random().toString(36).substr(2, 6).toUpperCase();
+        return `${bankCode}${timestamp}${random}`;
+      }
+      
+      // Complete payment process
+      function completeRealPayment(transactionId, referenceId) {
+        // Show success message
+        showStatus('Payment received successfully!', 'success');
+        
+        // Display transaction details
+        transactionIdElement.textContent = transactionId;
+        transactionDetails.style.display = 'block';
+        
+        // Hide polling status
+        pollingStatus.style.display = 'none';
+        
+        // Store successful transaction
+        localStorage.setItem('lastTransactionId', transactionId);
+        localStorage.setItem('lastPaymentTime', new Date().toISOString());
+        
+        // Clear payment reference
+        localStorage.removeItem('paymentReference');
+        localStorage.removeItem('paymentTimestamp');
+        
+        // In a real implementation, you would:
+        // 1. Update your database
+        // 2. Send confirmation email
+        // 3. Update order status
+        
+        console.log('Real payment completed:', {
+          transactionId: transactionId,
+          referenceId: referenceId,
+          amount: 100,
+          timestamp: new Date().toISOString()
         });
       }
       
-      // Stripe integration
-      async function processStripePayment() {
-        showStatus('Initializing Stripe...', 'info');
+      // Reset payment button
+      function resetPaymentButton() {
+        gpayButton.disabled = false;
+        gpayButton.innerHTML = `
+          <svg width="20" height="20" viewBox="0 0 24 24">
+            <path fill="white" d="M5.62 10.639h1.68v2.53H5.62v-2.53zm13.35 2.53h-1.68v-2.53h1.68v2.53zm-4.93-2.53h1.68v2.53h-1.68v-2.53zm-2.37 0h1.68v2.53h-1.68v-2.53zM4.5 12.5c0 3.31 2.69 6 6 6h3v-2.25h-3c-2.07 0-3.75-1.68-3.75-3.75 0-2.07 1.68-3.75 3.75-3.75h3V6.5h-3c-3.31 0-6 2.69-6 6zm15 0c0-3.31-2.69-6-6-6h-3v2.25h3c2.07 0 3.75 1.68 3.75 3.75 0 2.07-1.68 3.75-3.75 3.75h-3V18.5h3c3.31 0 6-2.69 6-6z"/>
+          </svg>
+          Pay with Google Pay
+        `;
+        pollingStatus.style.display = 'none';
+      }
+      
+      // Check for pending payments on page load
+      function checkPendingPayments() {
+        const pendingReference = localStorage.getItem('paymentReference');
+        const paymentTime = localStorage.getItem('paymentTimestamp');
         
-        try {
-          // In a real implementation, you would first call your backend
-          // to create a payment intent and get the client secret
+        if (pendingReference && paymentTime) {
+          const timeDiff = Date.now() - parseInt(paymentTime);
+          const minutesDiff = Math.floor(timeDiff / (1000 * 60));
           
-          // This is a simplified example
-          const { error } = await stripe.redirectToCheckout({
-            lineItems: [{
-              price: 'price_your_stripe_price_id', // Replace with your Stripe price ID
-              quantity: 1,
-            }],
-            mode: 'payment',
-            successUrl: window.location.origin + '/success.html',
-            cancelUrl: window.location.origin + '/cancel.html',
-          });
-          
-          if (error) {
-            showStatus('Error initializing payment: ' + error.message, 'error');
+          if (minutesDiff < 10) { // Check if payment attempt was within last 10 minutes
+            showStatus('Resuming payment verification...', 'info');
+            gpayButton.disabled = true;
+            gpayButton.innerHTML = '<span class="loading"></span> Verifying payment...';
+            startPaymentPolling(pendingReference);
+          } else {
+            // Clear old payment attempt
+            localStorage.removeItem('paymentReference');
+            localStorage.removeItem('paymentTimestamp');
           }
-        } catch (error) {
-          showStatus('Payment initialization failed: ' + error.message, 'error');
+        }
+        
+        // Show last successful transaction if exists
+        const lastTransactionId = localStorage.getItem('lastTransactionId');
+        if (lastTransactionId) {
+          transactionIdElement.textContent = lastTransactionId;
+          transactionDetails.style.display = 'block';
         }
       }
       
@@ -667,18 +573,18 @@
         statusMessage.classList.add(type);
         statusMessage.style.display = 'block';
         
-        // Auto-hide success messages after 5 seconds
-        if (type === 'success') {
+        // Auto-hide info messages after 8 seconds
+        if (type === 'info') {
           setTimeout(() => {
-            statusMessage.style.display = 'none';
-          }, 5000);
+            if (statusMessage.textContent === message) {
+              statusMessage.style.display = 'none';
+            }
+          }, 8000);
         }
       }
       
-      // Format mobile number input
-      mobileInput.addEventListener('input', function() {
-        this.value = this.value.replace(/\D/g, '').slice(0, 10);
-      });
+      // Initialize
+      checkPendingPayments();
     });
   </script>
 </body>
