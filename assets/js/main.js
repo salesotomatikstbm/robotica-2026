@@ -668,10 +668,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Payment links
   const paymentLinks = {
-    roboRace: 'https://www.robotica.org.in/',
-    roboSumo: 'https://www.robotica.org.in/',
-    workingModel: 'https://www.robotica.org.in/',
-    droneRace: 'https://www.robotica.org.in/'
+    roboRace: 'https://rzp.io/rzp/Robotica26',
+    roboSumo: 'https://rzp.io/rzp/Robotica26',
+    workingModel: 'https://rzp.io/rzp/fQ370OS',
+    droneRace: 'https://rzp.io/rzp/Robotica26'
   };
 
   // 🟢 Open popup for any "Register Now" button or link
